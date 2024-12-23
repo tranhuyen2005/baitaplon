@@ -1,0 +1,59 @@
+/* Cài đặt font mặc định */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container chính */
+.container {
+    width: 80%;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Tiêu đề của bảng */
+h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Các thẻ trong bảng */
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Phần tiêu đề bảng */
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Dòng thông tin dịch vụ */
+td {
+    background-color: #f9f9f9;
+}
+
+/* Dòng thông tin khi hover */
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Định dạng dòng tổng cộng */
+tr:last-child td {
+    background-color: #f9f9f9;
+}
