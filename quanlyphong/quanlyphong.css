@@ -1,0 +1,120 @@
+/* Cấu trúc chung */
+body {
+    font-family:Time New Roman;
+    background-color: #cee2f6;
+    padding-top: 20px;
+}
+/* Phòng trống (empty) */
+.room-card.status-empty {
+    background-color: white;  /* Màu nền trắng */
+    border: 1px solid #ddd;
+    color: #000000;
+}
+
+/* Phòng đã thuê (rented) */
+.status-rented {
+    background-color: #bce0f9; /* Màu xanh dương nhạt */
+    border: 1px solid #7fa9c7;
+    color: #073347;
+}
+
+
+/* Định dạng cho ô vuông bao quát */
+.facility-box {
+    border: 2px solid #b4d0ed; /* Khung ô vuông màu xanh */
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+    .facility-header a {
+        background-color: #add8e6; /* Xanh dương nhạt */
+        color: #000; /* Màu chữ đen */
+        text-decoration: none; /* Loại bỏ gạch chân */
+        padding: 10px 20px; /* Căn chỉnh kích thước */
+        border-radius: 5px; /* Bo tròn góc */
+        margin-right: 10px; /* Khoảng cách giữa các nút */
+        display: inline-block; /* Hiển thị như nút */
+    }
+
+    .facility-header a:hover {
+        background-color: #87ceeb; /* Màu khi di chuột */
+        color: #fff; /* Màu chữ khi di chuột */
+    }
+
+    .facility-header a.active {
+        background-color: #4682b4; /* Màu khi được chọn */
+        color: #fff;
+    }
+
+
+/* Định dạng các phòng trọ */
+.room-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.room-card h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.room-card p {
+    font-size: 0.9rem;
+}
+.room-card .btn-group {
+    margin-top: 10px;
+}
+
+.room-card .btn {
+    margin-right: 5px;
+}
+
+/* Định dạng cho các hàng phòng */
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.col-md-4 {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* Tìm kiếm và thêm phòng */
+.search-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar input,
+.search-bar select {
+    margin-right: 10px;
+}
+
+.search-bar .form-control,
+.search-bar .form-select {
+    width: auto;
+    max-width: 250px;
+}
+
+#search-btn {
+    margin-top: 10px;
+}
+
+#add-room-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #3f92f7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+#add-room-btn:hover {
+    background-color: #0056b3;
+}
