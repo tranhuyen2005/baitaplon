@@ -65,7 +65,7 @@ $result_rooms = $facility_id ? $conn->query($sql_rooms) : null;
                 <button class="btn btn-primary" id="search-btn">Tìm kiếm</button>
             </div>
             <div>
-                <button class="btn btn-success" id="add-room-btn">Thêm phòng</button>
+                <button class="btn btn-success" id="add-room-btn" onclick="window.location.href='/baiTapLon/quanlyphong/themphong.php'">Thêm phòng</button>
             </div>
         </div>
 
