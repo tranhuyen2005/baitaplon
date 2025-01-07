@@ -1,0 +1,152 @@
+/* Căn chỉnh chung cho trang */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #cee2f6;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;  /* Căn giữa nội dung trang */
+    align-items: center;
+    height: 100vh;
+    flex-direction: column; /* Đặt tất cả phần tử theo chiều dọc */
+}
+
+/* Tạo khung bao quanh cho container */
+.container {
+    background-color: #fff;
+    padding: 30px; /* Giảm padding để các phần tử gần nhau hơn */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 40px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Tiêu đề trang */
+h1 {
+    font-size: 30px;
+    color: #0f4d8c;
+    font-weight: 600;
+    margin-bottom: 15px; /* Giảm khoảng cách dưới tiêu đề */
+    text-align: center;
+}
+
+/* Các nhãn của form */
+.form-label {
+    margin-bottom: 10px; /* Giảm khoảng cách giữa nhãn và các trường nhập liệu */
+    font-size: 20px;
+    font-weight: 700;
+    color: #495057;
+}
+
+/* Các input fields */
+input.form-control {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    padding: 12px 9px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;  /* Giảm khoảng cách giữa các trường */
+    width: 100%;  /* Đảm bảo input chiếm toàn bộ chiều rộng */
+}
+
+/* Khi input được focus */
+input.form-control:focus {
+    border-color: #007bff;
+    background-color: #e9ecef;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Các trường nhập liệu đọc-only */
+input[readonly] {
+    background-color: #f1f3f6;
+    cursor: not-allowed;
+}
+
+/* Thanh số phòng dài ra */
+.room-number {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    padding: 15px; /* Thêm padding để thanh dài hơn */
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    width: 100%;  /* Thanh sẽ chiếm toàn bộ chiều rộng */
+    max-width: 500px;  /* Giới hạn chiều dài của thanh */
+    margin: 15px auto; /* Căn giữa và thêm khoảng cách */
+}
+
+/* Nút Quay Lại - Nổi bật */
+.btn-secondary {
+    background-color: #267ad4;  /* Màu nền nút */
+    border-color: #d7e3da;      /* Màu viền nút */
+    padding: 12px 40px;         /* Làm dài nút */
+    border-radius: 5px;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-top: 10px; /* Khoảng cách với các phần tử trên */
+    width: 100%; /* Đặt thanh nút dài ra */
+}
+
+/* Hiệu ứng hover - thay đổi màu khi rê chuột */
+.btn-secondary:hover {
+    background-color: #1e50ac;  /* Màu nền khi hover */
+    border-color: #1e50ac;      /* Màu viền khi hover */
+    transform: translateY(-2px); /* Hiệu ứng nâng nút lên khi hover */
+}
+
+/* Hiệu ứng active - khi nhấn vào nút */
+.btn-secondary:active {
+    background-color: #1e50ac;
+    border-color: #1e50ac;
+    transform: translateY(0); /* Trả lại vị trí ban đầu khi nhấn */
+}
+
+/* Nút khi không hover vẫn nổi bật */
+.btn-secondary:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5); /* Tạo viền sáng quanh nút */
+}
+
+/* Các trường hợp lỗi (nếu có) */
+.error-message {
+    color: red;
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Điều chỉnh cho các màn hình nhỏ */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 20px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    input.form-control {
+        font-size: 14px;
+    }
+
+    .btn-secondary {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+
+    .room-number {
+        font-size: 28px; /* Giảm kích thước của thanh số phòng trên màn hình nhỏ */
+    }
+}
