@@ -1,33 +1,52 @@
 <?php
-// Thông tin đăng nhập giả định
-$valid_username = 'Đỗ Hà Duyên';
-$valid_password = '123';
+session_start(); // Khởi tạo session
 
-// Biến để lưu thông báo lỗi hoặc thành công
-$message = '';
+// Kết nối cơ sở dữ liệu
+$host = 'localhost';
+$db = 'baitaplon';
+$user = 'root'; // Thay bằng username của MySQL
+$pass = '';     // Thay bằng mật khẩu của MySQL
 
-// Kiểm tra khi form được gửi
+try {
+    $conn = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+// Xử lý đăng nhập
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Lấy thông tin đăng nhập
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-    // Kiểm tra tên đăng nhập và mật khẩu
-    if ($username === $valid_username && $password === $valid_password) {
-        $message = "<h2 style='color: green;'>Đăng nhập thành công!</h2>";
+    if (!empty($username) && !empty($password)) {
+        // Truy vấn kiểm tra thông tin đăng nhập
+        $stmt = $conn->prepare("SELECT * FROM login WHERE username = :username");
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // So sánh mật khẩu thuần túy
+        if ($user && $user['password'] == $password) {
+            // Đăng nhập thành công, lưu thông tin vào session
+            $_SESSION['user'] = $user['username'];
+            header('Location: trangchu.php'); // Quay lại trang btl.php sau khi đăng nhập thành công
+            exit();
+        } else {
+            $error = "Tên người dùng hoặc mật khẩu không đúng.";
+        }
     } else {
-        $message = "<h2 style='color: red;'>Tên đăng nhập hoặc mật khẩu sai!</h2>";
+        $error = "Vui lòng nhập đầy đủ thông tin.";
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dangnhap.css">
 </head>
 <body>
     <div class="login-container">
