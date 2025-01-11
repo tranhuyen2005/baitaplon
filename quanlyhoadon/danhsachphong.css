@@ -61,7 +61,7 @@ h1 {
     border-color: #000000;
     border-radius: 10px;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 1.1rem;
     flex-shrink: 0; /* Đảm bảo nút tìm kiếm không bị co lại */
     color: white;
 }
@@ -108,7 +108,7 @@ h1 {
 .form-select{
     margin-top: 18px;
     height: 42px;
-    width: 520px;
+    width: 580px;
 }
 
 

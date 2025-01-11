@@ -39,6 +39,7 @@ $result = $conn->query($sql);
 if (!$result) {
     die("Lỗi truy vấn: " . $conn->error);
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +48,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Hóa Đơn</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6H4M6O2Go8hSIVp38IMjeU7b8n8fS6ttJ2klG6k5D5MZm9wewFz9c31fjf" crossorigin="anonymous">
     <link href="danhsachphong.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
@@ -57,12 +59,8 @@ if (!$result) {
         <!-- Nút chọn cơ sở -->
         <div class="d-flex justify-content-center my-3">
             <form method="POST" action="" class="facility-form">
-                <button type="submit" name="facility_id" value="1" class="btn btn-info facility-button <?php echo $ma_co_so == 1 ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-location-dot"></i> Cơ Sở 1
-                </button>
-                <button type="submit" name="facility_id" value="2" class="btn btn-info facility-button <?php echo $ma_co_so == 2 ? 'active' : ''; ?>">
-                    <i class="fa-solid fa-location-dot"></i> Cơ Sở 2
-                </button>
+                <button type="submit" name="facility_id" value="1" class="btn btn-info facility-button <?php echo $ma_co_so == 1 ? 'active' : ''; ?>"><i class="fa-solid fa-location-dot"></i> Cơ Sở 1</button>
+                <button type="submit" name="facility_id" value="2" class="btn btn-info facility-button <?php echo $ma_co_so == 2 ? 'active' : ''; ?>"><i class="fa-solid fa-location-dot"></i> Cơ Sở 2</button>
             </form>
         </div>
 
@@ -78,8 +76,8 @@ if (!$result) {
                 <div class="col-md-4">
                     <select name="status" class="form-select">
                         <option value="">Tất cả trạng thái</option>
-                        <option value="Đã thanh toán" <?php echo $tinh_trang == 'Đã thanh toán' ? 'selected' : ''; ?>>Đã thanh toán</option>
-                        <option value="Chưa thanh toán" <?php echo $tinh_trang == 'Chưa thanh toán' ? 'selected' : ''; ?>>Chưa thanh toán</option>
+                        <option value="paid" <?php echo $tinh_trang == 'paid' ? 'selected' : ''; ?>>Đã thanh toán</option>
+                        <option value="unpaid" <?php echo $tinh_trang == 'unpaid' ? 'selected' : ''; ?>>Chưa thanh toán</option>
                     </select>
                 </div>
                 <!-- Nút tìm kiếm -->
@@ -101,8 +99,7 @@ if (!$result) {
                                 <p class="card-text room-owner"><i class="fa-solid fa-user"></i> Chủ sở hữu: <?php echo htmlspecialchars($row['chu_so_huu']); ?></p>
                                 <p class="card-text room-status <?php echo $row['tinh_trang'] == 'Đã thanh toán' ? 'status-paid' : 'status-unpaid'; ?>">
                                     <i class="fa-solid fa-money-check-dollar"></i> Trạng thái: 
-                                    <?php echo htmlspecialchars($row['tinh_trang']); ?>
-                                </p>
+                                    <?php echo htmlspecialchars($row['tinh_trang']); ?></p>
                                 <div class="card-actions">
                                     <a href="xemhoadon.php?id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
                                     <a href="suahoadon.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Sửa</a>
@@ -112,9 +109,12 @@ if (!$result) {
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>
-                <p class="no-results text-center text-danger">Không có phòng nào phù hợp với tiêu chí tìm kiếm.</p>
+                <p class="no-results">
+                    Không có phòng nào phù hợp với tiêu chí tìm kiếm.
+                </p>
             <?php endif; ?>
         </div>
     </div>
 </body>
 </html>
+
