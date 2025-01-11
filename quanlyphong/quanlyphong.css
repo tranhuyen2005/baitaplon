@@ -58,6 +58,36 @@ h1 {
     gap: 10px; /* Khoảng cách giữa các nút */
     margin-bottom: 20px; /* Khoảng cách giữa các phần tử */
 }
+/* Nút Thuê phòng */
+.rent-button {
+    background-color: #fbbd09; /* Màu vàng */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.rent-button:hover {
+    background-color: #f7a800; /* Màu vàng đậm khi hover */
+}
+
+/* Nút Trả phòng */
+.return-button {
+    background-color: #e74c3c; /* Màu đỏ */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.return-button:hover {
+    background-color: #c0392b; /* Màu đỏ đậm khi hover */
+}
+
 
 /* Nút sửa */
 .edit-button {
@@ -124,7 +154,7 @@ h1 {
 
 .search-container input[type="text"], 
 .search-container select {
-    width: 650px;  /* Điều chỉnh chiều rộng của ô tìm kiếm */
+    width: 635px;  /* Điều chỉnh chiều rộng của ô tìm kiếm */
 }
 
 .search-container button {

@@ -86,9 +86,9 @@ if ($room['status'] != 'empty') {
         <div class="mt-4">
             <h3>Ảnh Phòng</h3>
             <?php while($anh = $result_image->fetch_assoc()) : ?>
-            <a href="xem.php?id=<?php echo $anh['id']; ?>">
-                    <img src="<?php echo $anh['image']; ?>" alt="sample picture" width="100px" height="100px">
-                    <p><?php echo $anh['name']; ?></p>
+            <a href="xem.php?id=<?php echo $anh['image_id']; ?>">
+                    <img src="<?php echo $anh['image_path']; ?>" alt="sample picture" width="100px" height="100px">
+                    <p><?php echo $anh['room_id']; ?></p>
             </a>
             <?php endwhile; ?>
         </div>

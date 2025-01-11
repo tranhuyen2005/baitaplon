@@ -10,21 +10,31 @@ body {
 
 /* Container */
 .container {
-    max-width: 800px; /* Giới hạn chiều rộng đã được mở rộng */
+    max-width: 600px; /* Giới hạn chiều rộng */
     margin: 30px auto;
     background-color: #ffffff;
-    padding: 25px; /* Thêm padding để không gian rộng hơn */
+    padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border: 1px solid #ddd;
     animation: fadeIn 0.3s ease-in-out;
 }
 
-
+/* Hiệu ứng mở đầu */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* Tiêu đề */
 h1 {
-    font-size: 28px; /* Tăng kích thước chữ của tiêu đề */
+    font-size: 24px;
     color: #000000;
     text-align: center;
     margin-bottom: 20px;
@@ -36,7 +46,7 @@ h1 {
 
 h1::after {
     content: "";
-    width: 70px; /* Tăng chiều dài đường dưới tiêu đề */
+    width: 50px;
     height: 3px;
     display: block;
     margin: 10px auto 0;
@@ -45,25 +55,22 @@ h1::after {
 
 /* Nhãn Form */
 .form-label {
-    font-weight: 700; /* Tăng độ đậm cho nhãn */
-    font-size: 20px; /* Tăng kích thước chữ */
-    margin-bottom: 10px; /* Thêm khoảng cách dưới nhãn */
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
     display: block;
-    color: #495057;
-    text-align: left;
+    color: #555;
 }
 
 /* Input */
 .form-control {
-    width: 100%; 
     border-radius: 6px;
-    border: 1px solid #ced4da;
-    padding: 12px 9px; /* Thêm padding để rộng hơn */
-    font-size: 16px; /* Tăng kích thước chữ */
-   /* margin-bottom: 5px; /* Tăng khoảng cách dưới các ô nhập liệu */
-    background-color: #f8f9fa;
-    transition: all 0.3s ease;
-    text-align: left;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
 }
 
 .form-control:focus {
@@ -75,8 +82,8 @@ h1::after {
 
 /* Nút */
 .btn {
-    padding: 12px 25px; /* Tăng kích thước nút */
-    font-size: 16px; /* Tăng cỡ chữ nút */
+    padding: 10px 20px;
+    font-size: 14px;
     font-weight: bold;
     border-radius: 8px;
     text-decoration: none;
@@ -134,15 +141,21 @@ h1::after {
     }
 
     h1 {
-        font-size: 24px; /* Giảm kích thước tiêu đề một chút cho màn hình nhỏ */
+        font-size: 20px;
     }
 
     .btn {
-        font-size: 14px; /* Giảm kích thước nút trên màn hình nhỏ */
+        font-size: 12px;
     }
 
     .form-control {
-        font-size: 14px;
-        padding: 10px;
+        font-size: 12px;
+        padding: 8px;
     }
 }
+
+
+
+
+
+
