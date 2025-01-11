@@ -62,7 +62,7 @@ if (isset($_POST['delete_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Phòng</title>
-    <link rel="stylesheet" href="quanlyphong.css">
+    <link rel="stylesheet" href="/baiTapLon/quanlyphong/quanlyphong.css">
 </head>
 <body>
 <div class="container">
@@ -79,8 +79,8 @@ if (isset($_POST['delete_id'])) {
             </select>
             <button type="submit" class="search-button">Tìm kiếm</button>
         </form>
-        <form action="them.php" method="GET" style="display: inline;">
-            <button type="submit" class="add-room-button">Thêm phòng</button>
+        <form action="themphong.php" method="GET" style="display: inline;">
+            <button type="submit" class="add-room-button" onclick="window.location.href='/baiTapLon/quanlyphong/themphong.php'">Thêm phòng</button>
         </form>
     </div>
 
