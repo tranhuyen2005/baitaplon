@@ -1,0 +1,78 @@
+body {
+    background: color #cee2f6;; /* Màu nền xanh nhạt */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    min-height: 50px;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1{
+    margin-bottom: 20px;
+    color: black;
+    text-align: center;
+}
+form {
+    margin: 20px 0;
+    text-align: left;
+    max-width: 100%; /* Đảm bảo form không vượt quá chiều rộng container */
+    overflow: hidden; /* Xử lý nếu có nội dung vượt quá chiều rộng */
+    box-sizing: border-box; /* Đảm bảo padding không làm form rộng hơn */
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select, button {
+    width: 100%;
+    width: calc(100% - 10px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
