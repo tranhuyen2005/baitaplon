@@ -81,8 +81,8 @@ if (isset($_POST['delete_id'])) {
             </select>
             <button type="submit" class="search-button">Tìm kiếm</button>
         </form>
-        <form action="them.php" method="GET" style="display: inline;">
-            <button type="submit" class="add-room-button">Thêm phòng</button>
+        <form action="themphong.php" method="GET" style="display: inline;">
+            <button type="submit" class="add-room-button" >Thêm phòng</button>
         </form>
     </div>
 
