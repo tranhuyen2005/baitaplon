@@ -13,6 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
 }
 
 /* Phần chứa form đăng ký */
@@ -93,20 +94,6 @@ body {
 
 .login-link a:hover {
     text-decoration: underline;
-}
-
-/* Thông báo lỗi và thành công */
-h2 {
-    font-size: 16px;
-    margin-top: 15px;
-}
-
-h2.red {
-    color: red;
-}
-
-h2.green {
-    color: green;
 }
 
 /* Popup điều khoản */

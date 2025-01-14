@@ -1,55 +1,50 @@
 <?php
-// Biến để lưu thông báo khi đăng ký
-$register_message = '';
-
 // Kết nối cơ sở dữ liệu
-$servername = "localhost";  // Địa chỉ máy chủ
-$username = "root";         // Tên người dùng MySQL
-$password = "";             // Mật khẩu của MySQL
-$dbname = "baitaplon";  // Tên cơ sở dữ liệu
+$host = 'localhost';
+$db = 'baiTapLon';
+$user = 'root';
+$pass = '';
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Kiểm tra kết nối
+$conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
-    die("Kết nối không thành công: " . $conn->connect_error);
+    die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Kiểm tra khi form được gửi
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Lấy thông tin đăng ký từ form
-    $full_name = $_POST['full_name'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-    $dob = $_POST['dob'];
-    $gender = $_POST['gender'];
-    $address = $_POST['address'];
+$message = ""; // Biến lưu thông báo cho người dùng
 
-    // Kiểm tra nếu tên đăng nhập hoặc mật khẩu rỗng
-    if (empty($username) || empty($password)) {
-        $register_message = "<h2 style='color: red;'>Vui lòng điền đầy đủ thông tin!</h2>";
-    } elseif ($password !== $confirm_password) {
-        $register_message = "<h2 style='color: red;'>Mật khẩu và xác nhận mật khẩu không khớp!</h2>";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Lấy dữ liệu từ form
+    $fullname = $conn->real_escape_string($_POST['fullname']);
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $conn->real_escape_string($_POST['password']);
+    $confirm_password = $conn->real_escape_string($_POST['confirm_password']);
+    $email = $conn->real_escape_string($_POST['email']);
+    $phone = $conn->real_escape_string($_POST['phone']);
+    $dob = $conn->real_escape_string($_POST['dob']);
+    $gender = $conn->real_escape_string($_POST['gender']);
+    $address = $conn->real_escape_string($_POST['address']);
+
+    // Kiểm tra thông tin nhập vào
+    if ($password !== $confirm_password) {
+        $message = "Mật khẩu không khớp!";
     } else {
-        // Bảo mật: Mã hóa mật khẩu
+        // Hash mật khẩu
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Chuẩn bị câu lệnh SQL để chèn thông tin vào cơ sở dữ liệu
-        $sql = "INSERT INTO users (fullname, username, password, email, phone, dob, gender, address) 
-                VALUES ('$full_name', '$username', '$hashed_password', '$email', '$phone', '$dob', '$gender', '$address')";
+        // Thực hiện truy vấn SQL
+        $sql = "INSERT INTO users ( fullname, username, password, email, phone, dob, gender, address) 
+                VALUES ('$fullname', '$username', '$hashed_password', '$email', '$phone', '$dob', '$gender', '$address')";
 
         if ($conn->query($sql) === TRUE) {
-            header("Location: trangchu.php");
+            header("Location: dangnhap.php");
             exit();
         } else {
-            $register_message = "<h2 style='color: red;'>Lỗi: " . $sql . "<br>" . $conn->error . "</h2>";
+            $message = "Lỗi: " . $conn->error;
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -61,10 +56,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="register-container">
         <h2>ĐĂNG KÝ TÀI KHOẢN</h2>
-        <form action="register.php" method="POST">
-    <div class="input-group">
+        <form action="dangky.php" method="POST">
+   <div class="input-group">
         <label for="full_name">Tên đầy đủ</label>
-        <input type="text" id="full_name" name="full_name" required>
+        <input type="text" id="fullname" name="fullname" required>
     </div>
     <div class="input-group">
         <label for="username">Tên đăng nhập</label>
@@ -112,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <!-- Liên kết quay lại trang đăng nhập -->
         <div class="login-link">
-            <p>Đã có tài khoản? <a href="login.php">Đăng nhập ngay</a></p>
+            <p>Đã có tài khoản? <a href="dangnhap.php">Đăng nhập ngay</a></p>
         </div>
     </div>
     <div id="terms-popup" class="terms-popup" style="display:none;">
@@ -146,5 +141,6 @@ function closeTerms() {
 }
 
         </script>
+
 </body>
 </html>
