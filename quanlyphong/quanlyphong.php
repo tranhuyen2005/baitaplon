@@ -55,6 +55,26 @@ if (isset($_POST['delete_id'])) {
     }
 }
 
+// Xử lý cập nhật thông tin phòng
+if (isset($_POST['update_room'])) {
+    $room_id = $_POST['room_id'];
+    $room_name = $_POST['room_name'];
+    $price = $_POST['price'];
+    $status = $_POST['status'];
+
+    $update_sql = "UPDATE rooms SET room_name = '$room_name', price = $price, status = '$status' WHERE id = $room_id";
+    if ($conn->query($update_sql) === TRUE) {
+        echo "Cập nhật thông tin phòng thành công!";
+    } else {
+        echo "Lỗi khi cập nhật phòng: " . $conn->error;
+    }
+
+    // Reload trang sau khi cập nhật
+    header("Location: quanlyphong.php");
+    exit();
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -127,10 +147,10 @@ if (isset($_POST['delete_id'])) {
                     <?php endif; ?>
 
                     <!-- Nút Sửa -->
-                    <form action="sua.php" method="GET" style="display:inline;">
-                        <input type="hidden" name="id" value="<?php echo $row["id"]; ?>" />
-                        <button type="submit" class="edit-button"><i class="fas fa-edit"></i> Sửa</button>
-                    </form>
+                    <button type="button" class="edit-button" onclick="openModal(<?php echo $row['id']; ?>)">
+                        <i class="fas fa-edit"></i> Sửa
+                    </button>
+
 
                     <!-- Nút Xem phòng -->
                     <form action="xem.php" method="GET" style="display:inline;">
@@ -231,6 +251,30 @@ $(document).ready(function () {
         $("#modal").fadeOut();
     }
 </script> 
+
+<script>
+    function openModal(roomId) {
+    // Hiển thị overlay và modal
+    $("#overlay").fadeIn();
+    $("#modal").fadeIn();
+
+    // Gửi yêu cầu AJAX để tải nội dung modal
+    $.ajax({
+        url: "sua.php",
+        method: "GET",
+        data: { room_id: roomId },
+        success: function (response) {
+            $("#modal-body").html(response);
+        },
+        error: function () {
+            $("#modal-body").html("<p>Lỗi khi tải nội dung.</p>");
+        }
+    });
+}
+
+</script>
+
+
 </body>
 </html>
 

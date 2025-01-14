@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #eaf2f8;
             color: #2c3e50;
-            display: flex;
+            display: flex; /* nằm ngang */
             flex-direction: column;
             height: 100vh;
         }
@@ -80,7 +81,8 @@
         }
 
         .sidebar ul li:hover {
-            background-color: #3b4b5a;
+            background-color: #5dade2;
+            color: #fff;
             padding-left: 25px;
         }
 
@@ -100,18 +102,42 @@
             justify-content: space-between;
             padding: 0 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-left: 250px;
+            transition: margin-left 0.3s ease;
         }
 
         .header h1 {
             font-size: 26px;
         }
 
+        .header .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header .admin-info span {
+            font-size: 18px;
+        }
+
+        .header .logout-btn {
+            padding: 10px 20px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .header .logout-btn:hover {
+            background-color: #c0392b;
+        }
+
         .content {
             flex: 1;
             padding: 30px;
             margin-left: 250px;
-            overflow-y: auto;
+            transition: margin-left 0.3s ease;
         }
 
         .facility {
@@ -152,12 +178,17 @@
         }
 
         .footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #2980b9;
+            padding: 20px;
+            background-color: #2c3e50;
             color: #ecf0f1;
             font-size: 14px;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .footer p {
+            margin: 5px 0;
         }
 
         @media (max-width: 768px) {
@@ -187,40 +218,51 @@
             <li><a href="#">Quản lí hóa đơn</a></li>
             <li><a href="#">Tiền dịch vụ</a></li>
             <li><a href="#">Báo cáo sự cố</a></li>
-            <li><a href="#">Thông tin liên lạc</a></li>
         </ul>
     </div>
 
     <div class="content">
         <div class="header">
             <h1>Quản Lý Nhà Trọ</h1>
+            <div class="admin-info">
+                <span>Xin chào, Admin</span>
+                <button class="logout-btn">Đăng xuất</button>
+            </div>
         </div>
 
         <div class="facility">
-            <img src="/image.png" alt="Cơ sở 1">
+            <img src="/trangchu/coso1.png" alt="Cơ sở 1">
             <h3>Cơ Sở 1</h3>
             <p><strong>Địa chỉ:</strong> 123 Đường A, Thành phố X</p>
             <p><strong>Thông tin:</strong> Có 20 phòng, tiện nghi hiện đại.</p>
         </div>
 
         <div class="facility">
-            <img src="facility2.jpg" alt="Cơ sở 2">
+            <img src="/trangchu/coso2.png" alt="Cơ sở 2">
             <h3>Cơ Sở 2</h3>
             <p><strong>Địa chỉ:</strong> 456 Đường B, Thành phố Y</p>
             <p><strong>Thông tin:</strong> Có 15 phòng, đầy đủ dịch vụ.</p>
         </div>
+    </div>
 
-        <div class="footer">
-            © 2024 Quản Lý Nhà Trọ. All Rights Reserved.
-        </div>
+    <div class="footer">
+        <p><strong>Liên hệ chủ nhà:</strong></p>
+        <p><strong>Điện thoại:</strong> 0123 456 789</p>
+        <p><strong>Email:</strong> chu_nha@gmail.com</p>
     </div>
 
     <script>
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
+        const content = document.querySelector('.content');
 
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('visible');
+            if (sidebar.classList.contains('visible')) {
+                content.style.marginLeft = '250px';
+            } else {
+                content.style.marginLeft = '0';
+            }
         });
     </script>
 </body>

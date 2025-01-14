@@ -1,78 +1,85 @@
-body {
-    background: color #cee2f6;; /* Màu nền xanh nhạt */
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
-    min-height: 50px;
-}
-
-.container {
-    width: 100%;
-    max-width: 800px;
-    background-color: #ffffff;
+/* CSS cho tiêu đề trong modal */
+.modal-header {
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-h1{
+    border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
-    color: black;
     text-align: center;
-}
-form {
-    margin: 20px 0;
-    text-align: left;
-    max-width: 100%; /* Đảm bảo form không vượt quá chiều rộng container */
-    overflow: hidden; /* Xử lý nếu có nội dung vượt quá chiều rộng */
-    box-sizing: border-box; /* Đảm bảo padding không làm form rộng hơn */
+    background-color: #f9f9f9;
 }
 
-fieldset {
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+/* CSS cho form */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Tăng khoảng cách giữa các nhóm */
+    padding: 20px;
     border: 1px solid #ddd;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 4px;
-    max-width: 100%;
-    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    margin-top: 0;
-}
-
-.form-group {
+.modal-form div {
+    display: block;
+    width: 100%;
     margin-bottom: 15px;
 }
 
-label {
+.modal-form label {
+    font-weight: bold;
+    color: #555;
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
 }
 
-input, select, button {
-    width: 100%;
-    width: calc(100% - 10px);
+.modal-form input,
+.modal-form select {
     padding: 10px;
-    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    max-width: 100%;
-    box-sizing: border-box;
+    font-size: 14px;
+    width: 100%;
 }
 
-button {
-    background-color: #4CAF50;
+.modal-form input:focus,
+.modal-form select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* CSS cho nút lưu */
+.modal-form button {
+    padding: 12px 20px;
+    background-color:aqua;
     color: white;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
 }
 
-button:hover {
+.modal-form button:hover {
     background-color: #45a049;
+}
+
+/* CSS cho thông báo lỗi */
+.modal-error {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Tạo sự phân cách giữa các mục */
+.modal-form div {
+    margin-bottom: 20px;
+
 }
