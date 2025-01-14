@@ -32,22 +32,6 @@ if (!empty($tinh_trang)) {
     $sql .= " AND tinh_trang = '$tinh_trang'";
 }
 
-$sql = "SELECT r.room_name, t.tenant_name, t.phone, r.status
-        FROM rooms r
-        JOIN tenants t ON r.id = t.room_id
-        WHERE r.status = 'Đã cho thuê'";
-
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-        echo "Phòng: " . $row['room_name'] . "<br>";
-        echo "Người thuê: " . $row['tenant_name'] . "<br>";
-        echo "Số điện thoại: " . $row['phone'] . "<br>";
-        echo "Trạng thái: " . $row['status'] . "<br>";
-        echo "<hr>";
-    }
-}
-
 
 // Thực thi câu truy vấn
 $result = $conn->query($sql);
