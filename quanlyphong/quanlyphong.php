@@ -19,7 +19,7 @@ $search_status = isset($_GET['search_status']) ? $_GET['search_status'] : '';
 $facility_id = isset($_GET['facility_id']) ? $_GET['facility_id'] : null;
 
 // Lấy dữ liệu phòng từ cơ sở dữ liệu (bao gồm cơ sở)
-$sql = "SELECT rooms.id, rooms.room_name, rooms.price, rooms.status, rooms.address, facilities.name AS facility_name, rooms.tenant_name
+$sql = "SELECT rooms.id, rooms.room_name, rooms.price, rooms.status, rooms.address, facilities.name AS facility_name
         FROM rooms
         JOIN facilities ON rooms.facility_id = facilities.id
         WHERE 1";
@@ -65,7 +65,6 @@ if (isset($_POST['delete_id'])) {
     <title>Quản lý Phòng</title>
     <link rel="stylesheet" href="quanlyphong.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="/baiTapLon/quanlyphong/modalthem.css">
 </head>
 
 <body>
@@ -117,10 +116,9 @@ if (isset($_POST['delete_id'])) {
 
                     <!-- Nút Thuê phòng hoặc Trả phòng -->
                     <?php if ($row["status"] == "Còn trống"): ?>
-                        <form action="thuephong.php" method="POST" style="display:inline;">
-                            <input type="hidden" name="id" value="<?php echo $row["id"]; ?>" />
-                            <button type="submit" class="rent-button"><i class="fas fa-handshake"></i> Thuê phòng</button>
-                        </form>
+                        <button type="button" class="rent-button open-modal" data-room-id="<?php echo $row['id']; ?>">
+                            <i class="fas fa-handshake"></i> Thuê phòng
+                        </button>
                     <?php elseif ($row["status"] == "Đã cho thuê"): ?>
                         <form action="traphong.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $row["id"]; ?>" />
@@ -154,11 +152,50 @@ if (isset($_POST['delete_id'])) {
     <?php endif; ?>
 </div>
 
+<!--Modal: Thuê phòng -->
+<div id="rent-modal-overlay" style="display: none;"></div>
+<div id="rent-modal" style="display: none;">
+    <div class="modal-content">
+        <div id="rent-modal-body">
+            <!-- Nội dung form thuê phòng sẽ được tải bằng AJAX -->
+        </div>
+        <button id="close-rent-modal" class="close-btn">Đóng</button>
+    </div>
+</div>
+<script>
+$(document).ready(function () {
+    // Hiển thị modal khi bấm nút "Thuê phòng"
+    $(document).on("click", ".open-modal", function () {
+        const roomId = $(this).data("room-id");
+        $("#rent-modal-overlay").fadeIn();
+        $("#rent-modal").fadeIn();
+
+        // Gửi AJAX để tải form
+        $.ajax({
+            url: "thuephong_form.php", // File chứa form nhập thông tin
+            method: "GET",
+            data: { room_id: roomId },
+            success: function (data) {
+                $("#rent-modal-body").html(data);
+            },
+            error: function () {
+                $("#rent-modal-body").html("<p>Lỗi khi tải thông tin.</p>");
+            }
+        });
+    });
+
+    // Đóng modal
+    $("#rent-modal-overlay, #close-rent-modal").click(function () {
+        $("#rent-modal-overlay").fadeOut();
+        $("#rent-modal").fadeOut();
+    });
+});
+</script>
+
 <!-- Modal: Thêm phòng -->
 <div id="overlay"></div>
 <div id="modal">
     <div class="modal-content">
-        <button class="close-btn" onclick="closeModal()">×</button>
         <div id="modal-body">
             <!-- Nội dung form thêm phòng sẽ được tải ở đây -->
         </div>

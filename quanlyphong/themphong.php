@@ -12,12 +12,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $room_name = $_POST['room_name'];
     $price = $_POST['price'];
     $address = $_POST['address'];
+    $so_nguoi_o = $_POST['so_nguoi_o'];
     $status = 'Còn trống'; // Trạng thái phòng mặc định
-    $tenant_name = null; // Không có người thuê khi tạo phòng
+
 
     // Chèn dữ liệu vào bảng rooms
-    $sql = "INSERT INTO rooms (facility_id, room_name, price, status, address, tenant_name)
-            VALUES ('$facility_id', '$room_name', '$price', '$status', '$address', '$tenant_name')";
+    $sql = "INSERT INTO rooms (facility_id, room_name, price, status, address, so_nguoi_o)
+            VALUES ('$facility_id', '$room_name', '$price', '$status', '$address', '$so_nguoi_o')";
     
     if ($conn->query($sql) === TRUE) {
         // Lấy id của phòng vừa chèn
@@ -54,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Phòng</title>
-
+    <link rel="stylesheet" href="/baiTapLon/quanlyphong/themphong.css">
     <script>
         function previewImage(event) {
             var reader = new FileReader();
@@ -68,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
-    <h1>Thêm Phòng Mới</h1>
+    <h1>Thêm Phòng Mới  <span class="close-btn" onclick="closeModal()">X</span></h1>
+    
     <form action="themphong.php" method="POST" enctype="multipart/form-data">
         <label for="facility_id">Chọn Cơ Sở:</label>
         <select id="facility_id" name="facility_id" required>
@@ -94,6 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         <label for="address">Địa Chỉ:</label>
         <input type="text" id="address" name="address" required><br><br>
+
+        <label for="so_nguoi_o">Số Người Ở:</label>
+        <input type="number" id="so_nguoi_o" name="so_nguoi_o" required><br><br>
         
         <label for="room_image">Ảnh Phòng:</label>
         <input type="file" id="room_image" name="room_image" accept="image/*" onchange="previewImage(event)" required><br><br>
