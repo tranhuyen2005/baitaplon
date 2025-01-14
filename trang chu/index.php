@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f6f9;
+            background-color: #eaf2f8;
             color: #2c3e50;
             display: flex;
             flex-direction: column;
@@ -21,20 +21,22 @@
         }
 
         .sidebar {
-            width: 260px;
-            background-color: #2c3e50;
+            width: 250px;
+            background-color: #34495e;
             color: #ecf0f1;
             position: fixed;
             top: 0;
             bottom: 0;
             left: 0;
             overflow-y: auto;
-            padding: 20px 0;
+            padding: 15px 0;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transform: translateX(-250px);
             transition: transform 0.3s ease;
         }
 
-        .sidebar.hidden {
-            transform: translateX(-260px);
+        .sidebar.visible {
+            transform: translateX(0);
         }
 
         .menu-toggle {
@@ -43,21 +45,28 @@
             left: 20px;
             cursor: pointer;
             color: #ecf0f1;
-            background: #34495e;
+            background: #2980b9;
             border: none;
             padding: 10px 15px;
-            border-radius: 5px;
+            border-radius: 50%;
             z-index: 1000;
-            font-size: 18px;
+            font-size: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background-color: #3498db;
         }
 
         .sidebar-header {
             padding: 20px;
             text-align: center;
-            background-color: #34495e;
-            font-size: 20px;
+            background-color: #2c3e50;
+            font-size: 22px;
             font-weight: bold;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            color: #fff;
         }
 
         .sidebar ul {
@@ -67,11 +76,12 @@
         .sidebar ul li {
             padding: 15px 20px;
             border-bottom: 1px solid #3b4b5a;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, padding-left 0.3s;
         }
 
         .sidebar ul li:hover {
             background-color: #3b4b5a;
+            padding-left: 25px;
         }
 
         .sidebar ul li a {
@@ -82,31 +92,25 @@
         }
 
         .header {
-            background-color: #34495e;
+            background-color: #2980b9;
             color: #ecf0f1;
-            height: 60px;
+            height: 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
-            flex-shrink: 0;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-left: 260px;
-        }
-
-        .header img {
-            height: 40px;
-            margin-right: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-left: 250px;
         }
 
         .header h1 {
-            font-size: 22px;
+            font-size: 26px;
         }
 
         .content {
             flex: 1;
             padding: 30px;
-            margin-left: 260px;
+            margin-left: 250px;
             overflow-y: auto;
         }
 
@@ -126,8 +130,13 @@
             width: 100%;
             max-width: 400px;
             height: auto;
-            border-radius: 8px;
+            border-radius: 10px;
             margin-bottom: 15px;
+            transition: transform 0.3s;
+        }
+
+        .facility img:hover {
+            transform: scale(1.05);
         }
 
         .facility h3 {
@@ -145,17 +154,18 @@
         .footer {
             text-align: center;
             padding: 10px;
-            background-color: #34495e;
+            background-color: #2980b9;
             color: #ecf0f1;
             font-size: 14px;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
         }
 
         @media (max-width: 768px) {
             .sidebar {
-                transform: translateX(-260px);
+                transform: translateX(-250px);
             }
 
-            .sidebar.hidden {
+            .sidebar.visible {
                 transform: translateX(0);
             }
 
@@ -210,7 +220,7 @@
         const sidebar = document.getElementById('sidebar');
 
         menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('visible');
         });
     </script>
 </body>

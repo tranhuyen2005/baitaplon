@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Báo Cáo Sự Cố Phòng Trọ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Báo Cáo Sự Cố Phòng Trọ</h1>
+        <form action="submit_incident.php" method="POST">
+            <label for="room_number">Số phòng:</label>
+            <input type="text" id="room_number" name="room_number" required>
+
+            <label for="description">Mô tả sự cố:</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+
+            <label for="reported_by">Tên người báo cáo:</label>
+            <input type="text" id="reported_by" name="reported_by" required>
+
+            <button type="submit">Gửi báo cáo</button>
+        </form>
+    </div>
+</body>
+</html>
