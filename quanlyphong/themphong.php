@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Phòng</title>
-    <link rel="stylesheet" href="/baiTapLon/quanlyphong/themphong.css">
+
     <script>
         function previewImage(event) {
             var reader = new FileReader();

@@ -1,81 +1,76 @@
-/* Đặt nền cho toàn bộ trang */
-body {
+/* Nội dung của modal */
+.modal-content {
+    padding: 20px;
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+    color: #333;
 }
 
-/* Định dạng tiêu đề */
-h1 {
+/* Tiêu đề modal */
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
     text-align: center;
-    margin-top: 20px;
-    font-size: 2.2em;
     color: #333;
 }
 
-/* Định dạng form */
-form {
-    background-color: #fff;
-    width: 40%; /* Giảm chiều rộng của form */
-    margin: 0 auto;
-    padding: 8px; /* Giảm padding của form */
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Định dạng các nhãn */
-label {
-    display: block;
-    margin: 3px 0;
+/* Các label và input trong form */
+.modal-content label {
+    font-size: 16px;
     font-weight: bold;
-    color: #333;
-}
-
-/* Định dạng các input, select, textarea */
-input[type="text"],
-input[type="number"],
-select,
-input[type="file"] {
-    width: 100%;
-    padding: 5px; /* Giảm padding của input */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
     margin-bottom: 8px;
-    font-size: 1em;
+    display: block;
+    color: #555;
 }
 
-/* Định dạng ảnh preview */
-#image_preview {
-    margin-top: 3px;
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content select,
+.modal-content input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
-/* Định dạng nút submit */
-button[type="submit"] {
-    width: 100%;
-    padding: 8px; /* Giảm padding của button */
-    background-color: #4CAF50;
+/* Hiển thị ảnh preview */
+#image_preview {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Nút gửi (submit) */
+.modal-content button {
+    background-color: #566597;
     color: white;
-    font-size: 1em; /* Giảm font-size của button */
     border: none;
+    padding: 10px 20px;
+    font-size: 16px;
     border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.modal-content button:hover {
+    background-color: #487ea1;
+}
+
+/* Nút đóng */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #333;
     cursor: pointer;
 }
 
-button[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-/* Định dạng form khi màn hình nhỏ */
-@media (max-width: 768px) {
-    form {
-        width: 80%; /* Tăng chiều rộng khi màn hình nhỏ */
-    }
-
-    h1 {
-        font-size: 2em;
-    }
+.close-btn:hover {
+    color: #ff0000; /* Đổi màu khi hover */
 }

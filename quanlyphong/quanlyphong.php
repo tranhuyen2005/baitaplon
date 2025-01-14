@@ -64,6 +64,8 @@ if (isset($_POST['delete_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Phòng</title>
     <link rel="stylesheet" href="quanlyphong.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/baiTapLon/quanlyphong/modalthem.css">
 </head>
 
 <body>
@@ -81,9 +83,7 @@ if (isset($_POST['delete_id'])) {
             </select>
             <button type="submit" class="search-button">Tìm kiếm</button>
         </form>
-        <form action="themphong.php" method="GET" style="display: inline;">
-            <button type="submit" class="add-room-button" >Thêm phòng</button>
-        </form>
+        <button id="add-room-btn" class="add-room-button">Thêm phòng</button>
     </div>
 
     <!-- Nút chọn cơ sở -->
@@ -153,6 +153,47 @@ if (isset($_POST['delete_id'])) {
         <p>Không có phòng nào.</p>
     <?php endif; ?>
 </div>
+
+<!-- Modal: Thêm phòng -->
+<div id="overlay"></div>
+<div id="modal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <div id="modal-body">
+            <!-- Nội dung form thêm phòng sẽ được tải ở đây -->
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Mở modal khi bấm nút "Thêm phòng"
+        $("#add-room-btn").click(function () {
+            $("#overlay").fadeIn();
+            $("#modal").fadeIn();
+            $.ajax({
+                url: "themphong.php", // File PHP xử lý thêm phòng
+                method: "GET",
+                success: function (data) {
+                    $("#modal-body").html(data);
+                },
+                error: function () {
+                    $("#modal-body").html("<p>Lỗi khi tải nội dung.</p>");
+                }
+            });
+        });
+
+        // Đóng modal khi bấm overlay
+        $("#overlay").click(function () {
+            closeModal();
+        });
+    });
+
+    function closeModal() {
+        $("#overlay").fadeOut();
+        $("#modal").fadeOut();
+    }
+</script> 
 </body>
 </html>
 
