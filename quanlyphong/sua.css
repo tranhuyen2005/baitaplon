@@ -1,0 +1,85 @@
+/* CSS cho tiêu đề trong modal */
+.modal-header {
+    padding: 20px;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+/* CSS cho form */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Tăng khoảng cách giữa các nhóm */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-form div {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.modal-form label {
+    font-weight: bold;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-form input,
+.modal-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.modal-form input:focus,
+.modal-form select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* CSS cho nút lưu */
+.modal-form button {
+    padding: 12px 20px;
+    background-color:aqua;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.modal-form button:hover {
+    background-color: #45a049;
+}
+
+/* CSS cho thông báo lỗi */
+.modal-error {
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* Tạo sự phân cách giữa các mục */
+.modal-form div {
+    margin-bottom: 20px;
+
+}
