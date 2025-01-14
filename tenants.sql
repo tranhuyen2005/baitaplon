@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 06, 2025 at 09:31 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Máy chủ: localhost
+-- Thời gian đã tạo: Th1 14, 2025 lúc 01:52 PM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,18 +18,18 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `baitaplon`
+-- Cơ sở dữ liệu: `baiTapLon`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tenants`
+-- Cấu trúc bảng cho bảng `tenants`
 --
 
 CREATE TABLE `tenants` (
   `id` int(11) NOT NULL,
-  `room_id` varchar(10) DEFAULT NULL,
+  `room_id` int(11) NOT NULL,
   `tenant_name` varchar(255) NOT NULL,
   `dob` date NOT NULL,
   `phone` varchar(50) NOT NULL,
@@ -41,43 +41,35 @@ CREATE TABLE `tenants` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tenants`
---
-
-INSERT INTO `tenants` (`id`, `room_id`, `tenant_name`, `dob`, `phone`, `cccd`, `address`, `checkin_date`, `checkout_date`, `status`) VALUES
-(13, '1', 'Nguyễn Văn A', '1990-05-12', '012345678901', '001324482556', 'Bắc Phú, Sóc Sơn, Hà Nội', '2024-01-01', NULL, 'active'),
-(14, '2', 'Trần Thị B', '1985-09-20', '012345678902', '001254851566', 'Liên Xuân, Thủy Nguyên, Hải Phòng', '2023-12-01', '2024-12-01', 'inactive');
-
---
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tenants`
+-- Chỉ mục cho bảng `tenants`
 --
 ALTER TABLE `tenants`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `tenants_ibfk_1` (`room_id`);
+  ADD KEY `fk_room_id` (`room_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tenants`
+-- AUTO_INCREMENT cho bảng `tenants`
 --
 ALTER TABLE `tenants`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `tenants`
+-- Các ràng buộc cho bảng `tenants`
 --
 ALTER TABLE `tenants`
-  ADD CONSTRAINT `tenants` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
