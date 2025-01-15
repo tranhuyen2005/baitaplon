@@ -33,72 +33,79 @@
     cursor: pointer;
 }
 
-/* Nội dung modal */
-.modal-content .modal-content {
+.modal-content {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     padding: 20px;
-    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
 }
 
-/* Nút đóng modal */
-.modal-content .close-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    display: block;
-    width: 100%;
+.modal-content h2 {
     text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-/* Hiệu ứng hover cho nút đóng */
-.modal-content .close-btn:hover {
-    background-color: #d32f2f;
+.modal-content label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
 }
 
-/* Các trường nhập liệu trong form */
-.modal-content input[type="text"], input[type="date"], textarea {
-    width: 100%;
+.modal-content input[type="text"],
+.modal-content input[type="date"],
+.modal-content textarea {
+    width: calc(100% - 20px);
     padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 15px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
     box-sizing: border-box;
     font-size: 14px;
 }
 
-/* Textarea thêm chiều cao */
 .modal-content textarea {
-    height: 100px;
     resize: vertical;
+    min-height: 80px;
 }
 
-/* Nút submit */
 .modal-content .submit-button {
-    background-color: #4CAF50;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
     color: white;
     border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 5px;
     font-size: 16px;
-    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .modal-content .submit-button:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
 }
 
-/* Responsive cho modal khi màn hình nhỏ */
-@media screen and (max-width: 768px) {
-    .modal {
-        width: 80%;
+.modal-content input:focus,
+.modal-content textarea:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 15px;
     }
 
-    .submit-button {
-        font-size: 14px;
+    .modal-content input[type="text"],
+    .modal-content input[type="date"],
+    .modal-content textarea {
+        width: calc(100% - 15px);
     }
 }

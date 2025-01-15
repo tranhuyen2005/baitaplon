@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 
     // Chuyển hướng về trang quản lý phòng
-    header("Location: quanlyphong.php");
+    header("Location: quanlyphong.php?facility_id=" . $facility_id);
     exit();
 }
 ?>
@@ -49,6 +49,9 @@ if (isset($_GET['room_id'])) {
     ?>
     <form action="thuephong_form.php" method="POST">
         <input type="hidden" name="room_id" value="<?php echo $room_id; ?>" />
+        
+        <h2>Điền thông tin khách thuê</h2>
+        
         <label for="tenant_name">Tên khách thuê:</label>
         <input type="text" id="tenant_name" name="tenant_name" required />
 
