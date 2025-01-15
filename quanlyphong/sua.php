@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($conn->query($update_sql) === TRUE) {
         
         // Chuyển hướng về trang danh sách với thông báo thành công
-        header("Location: quanlyphong.php?success=Phòng đã được cập nhật thành công.");
+        header("Location: /baiTapLon/quanlyphong/quanlyphong.php?success=Phòng đã được cập nhật thành công.");
         exit;
     } else {
         echo "Lỗi: " . $conn->error;
