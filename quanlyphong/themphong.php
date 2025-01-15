@@ -56,6 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Phòng</title>
     <link rel="stylesheet" href="/baiTapLon/quanlyphong/themphong.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+</head>
+
     <script>
         function previewImage(event) {
             var reader = new FileReader();
@@ -73,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <h1>Thêm Phòng Mới</h1>
     
     <form action="themphong.php" method="POST" enctype="multipart/form-data">
-        <label for="facility_id">Chọn Cơ Sở:</label>
+        <label for="facility_id"><i class="fas fa-building"></i>Chọn Cơ Sở:</label>
         <select id="facility_id" name="facility_id" required>
             <?php
             // Lấy danh sách các cơ sở từ bảng facilities
@@ -89,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ?>
         </select><br><br>
         
-        <label for="room_name">Tên Phòng:</label>
+        <label for="room_name"><i class="fas fa-bed"></i>Tên Phòng:</label>
         <input type="text" id="room_name" name="room_name" required><br><br>
         
         <label for="price">Giá:</label>
