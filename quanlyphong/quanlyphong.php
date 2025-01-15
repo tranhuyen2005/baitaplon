@@ -57,7 +57,7 @@ if (!$result) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Phòng Trọ</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6H4M6O2Go8hSIVp38IMjeU7b8n8fS6ttJ2klG6k5D5MZm9wewFz9c31fjf" crossorigin="anonymous">
-    <link href="quanlyphong.css" rel="stylesheet">
+    <link href="/baiTapLon/quanlyphong/quanlyphong.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body style="background-color: #cee2f6;">
@@ -127,6 +127,7 @@ if (!$result) {
                                         <a href="tra_phong.php?id=<?php echo $row['room_id']; ?>" class="btn btn-danger"><i class="fa-solid fa-arrow-right-to-bracket"></i> Trả phòng</a>
                                     <?php endif; ?>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -138,5 +139,10 @@ if (!$result) {
             <?php endif; ?>
         </div>
     </div>
+
+    <div class="d-flex justify-content-start my-3">
+            <a href="/baiTapLon/trangchu/trangchu.php" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ</a>
+        </div>
+
 </body>
 </html>

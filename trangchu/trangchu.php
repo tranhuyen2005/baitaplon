@@ -30,17 +30,17 @@
         </div>
 
         <div class="facility">
-            <img src="/trangchu/coso1.png" alt="Cơ sở 1">
+            <img src="/baiTapLon/trangchu/coso1.png" alt="Cơ sở 1">
             <h3>Cơ Sở 1</h3>
-            <p><strong>Địa chỉ:</strong> 123 Đường A, Thành phố X</p>
-            <p><strong>Thông tin:</strong> Có 20 phòng, tiện nghi hiện đại.</p>
+            <p><strong>Địa chỉ:</strong> Triều Khúc, Hà Nội</p>
+           
         </div>
 
         <div class="facility">
-            <img src="/trangchu/coso2.png" alt="Cơ sở 2">
+            <img src="/baiTapLon/trangchu/coso2.png" alt="Cơ sở 2">
             <h3>Cơ Sở 2</h3>
-            <p><strong>Địa chỉ:</strong> 456 Đường B, Thành phố Y</p>
-            <p><strong>Thông tin:</strong> Có 15 phòng, đầy đủ dịch vụ.</p>
+            <p><strong>Địa chỉ:</strong> Thủ Đức, Hồ Chí Minh</p>
+            
         </div>
     </div>
 

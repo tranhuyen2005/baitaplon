@@ -85,6 +85,9 @@ $facility_address = isset($facility_addresses[$facility_id]) ? $facility_address
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="d-flex justify-content-start my-3">
+            <a href="/baiTapLon/trangchu/trangchu.php" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ</a>
+        </div>
 </body>
 </html>
 

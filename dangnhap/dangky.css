@@ -25,7 +25,7 @@ body {
     border-radius: 8px;
     text-align: center;
     overflow-y: auto; /*thêm thanh cuộn */
-    max-height: 90v;/* giới hạn chiều cao */
+    max-height: 90vh;/* giới hạn chiều cao */
 }
 
 /* Tiêu đề */

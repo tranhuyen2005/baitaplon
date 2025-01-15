@@ -53,5 +53,8 @@ $fees = $query->fetchAll(PDO::FETCH_ASSOC);
             <i class="fas fa-plus-circle"></i> Thêm Dịch Vụ
         </button>
     </div>
+    <div class="d-flex justify-content-start my-3">
+            <a href="/baiTapLon/trangchu/trangchu.php" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Quay lại trang chủ</a>
+        </div>
 </body>
 </html>
