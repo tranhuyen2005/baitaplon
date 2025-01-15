@@ -12,7 +12,7 @@ $fees = $query->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Phí Dịch Vụ</title>
-    <link rel="stylesheet" href="dichvu.css">
+    <link rel="stylesheet" href="/baiTapLon/tiendichvu/dichvu.css">
 </head>
 <body>
     <div class="container">
@@ -35,8 +35,8 @@ $fees = $query->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo number_format($fee['price'], 0, ',', '.'); ?> VND</td>
                         <td><?php echo htmlspecialchars($fee['unit']); ?></td>
                         <td>
-                            <a href="edit.php?id=<?php echo $fee['id']; ?>">Sửa</a> | 
-                            <a href="delete.php?id=<?php echo $fee['id']; ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+                        <button class="btn-edit" onclick="window.location.href='edit.php?id=<?php echo $fee['id']; ?>'">Sửa</button>
+                        <button class="btn-delete" onclick="if (confirm('Bạn có chắc chắn muốn xóa?')) window.location.href='delete.php?id=<?php echo $fee['id']; ?>'">Xóa</button>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -44,7 +44,7 @@ $fees = $query->fetchAll(PDO::FETCH_ASSOC);
         </table>
 
         <!-- Liên kết đến trang thêm dịch vụ -->
-        <a href="add.php">Thêm Dịch Vụ </a>
+        <button class="btn-add" onclick="window.location.href='add.php'">Thêm Dịch Vụ</button>
     </div>
 </body>
 </html>

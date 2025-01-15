@@ -1,15 +1,15 @@
 /* Cài đặt font mặc định */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #cee2fe;
     margin: 0;
     padding: 0;
 }
 
 /* Container chính */
 .container {
-    width: 80%;
-    margin: 30px auto;
+    width: 50%; /* Chỉnh lại chiều rộng của container để chiếm 50% trang */
+    margin: 30px auto; /* Căn giữa theo chiều ngang */
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -25,7 +25,7 @@ h2 {
 
 /* Bảng */
 table {
-    width: 100%;
+    width: 100%; /* Để bảng chiếm hết chiều rộng của container */
     border-collapse: collapse;
     margin-top: 20px;
 }
@@ -53,3 +53,42 @@ tr:hover {
     background-color: #f1f1f1;
 }
 
+/* Nút cơ bản */
+button {
+    padding: 8px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Nút sửa */
+.btn-edit {
+    background-color: blue; /* Màu xanh cho nút sửa */
+    color: white;
+}
+
+
+/* Nút xóa */
+.btn-delete {
+    background-color: #f44336; /* Màu đỏ cho nút xóa */
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #d32f2f; /* Màu khi hover */
+}
+
+/* Nút thêm dịch vụ */
+.btn-add {
+    background-color: #008CBA; /* Màu xanh lam cho nút thêm */
+    color: white;
+    margin-top: 20px;
+}
+
+.btn-add:hover {
+    background-color: #007bb5; /* Màu khi hover */
+}
