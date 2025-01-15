@@ -34,6 +34,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $address = $_POST['address'];
     $checkin_date = $_POST['checkin_date'];
 
+<<<<<<< HEAD
+    // Thêm khách thuê
+    $insert_tenant = $conn->prepare("INSERT INTO tenants (room_id, tenant_name, dob, phone, cccd, address, checkin_date, status) 
+                                     VALUES (?, ?, ?, ?, ?, ?, ?, 'occupied')");
+    $insert_tenant->bind_param("issssss", $room_id, $tenant_name, $dob, $phone, $cccd, $address, $checkin_date);
+
+    if ($insert_tenant->execute()) {
+        // Cập nhật trạng thái phòng
+        $update_room = $conn->prepare("UPDATE rooms SET status = 'occupied' WHERE id = ?");
+        $update_room->bind_param("i", $room_id);
+        if ($update_room->execute()) {
+            echo "Thuê phòng thành công!";
+            header("Location: quanlyphong.php?facility_id=" . $_POST['facility_id']);
+            exit();
+        } else {
+            echo "Lỗi khi cập nhật trạng thái phòng: " . $conn->error;
+        }
+=======
     // Câu lệnh SQL để thêm thông tin khách thuê vào bảng tenants
     $sql = "INSERT INTO tenants (room_id, tenant_name, dob, phone, cccd, address, checkin_date, status) 
             VALUES (?, ?, ?, ?, ?, ?, ?, 'occupied')";
@@ -47,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Lỗi: Không thể thêm thông tin khách.";
         }
         $stmt->close();
+>>>>>>> 41fa027336c9c07a462b9f33a4044f446b9e4b3b
     } else {
         echo "Lỗi: Không thể thực thi câu lệnh SQL!";
     }
@@ -59,8 +78,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Thuê Phòng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+=======
+<<<<<<< HEAD
+    <title>Thuê Phòng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+=======
+    <title>Đặt Phòng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+>>>>>>> 41fa027336c9c07a462b9f33a4044f446b9e4b3b
+>>>>>>> b4f241e2de2b5027511d5e4e01291be45c921c95
     <link rel="stylesheet" href="/baiTapLon/quanlyphong/thuephong.css">
 </head>
 <body>
