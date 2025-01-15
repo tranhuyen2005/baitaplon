@@ -62,7 +62,9 @@ button {
     cursor: pointer;
     font-size: 14px;
     text-align: center;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center; /* Căn giữa icon và text */
+    justify-content: center;
 }
 
 /* Nút sửa */
@@ -71,11 +73,20 @@ button {
     color: white;
 }
 
+.btn-edit i {
+    margin-right: 8px; /* Khoảng cách giữa icon và text */
+    font-size: 16px; /* Cỡ icon */
+}
 
 /* Nút xóa */
 .btn-delete {
     background-color: #f44336; /* Màu đỏ cho nút xóa */
     color: white;
+}
+
+.btn-delete i {
+    margin-right: 8px; /* Khoảng cách giữa icon và text */
+    font-size: 16px; /* Cỡ icon */
 }
 
 .btn-delete:hover {
@@ -87,6 +98,14 @@ button {
     background-color: #008CBA; /* Màu xanh lam cho nút thêm */
     color: white;
     margin-top: 20px;
+    display: inline-flex;
+    align-items: center; /* Căn giữa icon và text */
+    justify-content: center;
+}
+
+.btn-add i {
+    margin-right: 8px; /* Khoảng cách giữa icon và text */
+    font-size: 16px; /* Cỡ icon */
 }
 
 .btn-add:hover {
