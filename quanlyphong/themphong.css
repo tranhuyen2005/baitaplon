@@ -1,7 +1,7 @@
 /* Thêm phong cách cho giao diện themphong.php */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
+    background-color: #cee2f6;
     margin: 0;
     padding: 0;
     display: flex;
@@ -32,7 +32,7 @@ form div {
 
 label {
     display: block;
-    font-size: 14px;
+    font-size: 18px;
     color: #555555;
     margin-bottom: 5px;
 }
@@ -52,26 +52,41 @@ input:focus, select:focus {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-button {
-    background-color: #007bff;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.button-group {
+    display: flex; /* Đặt các nút theo chiều ngang */
+    justify-content: center; /* Canh giữa các nút */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Khoảng cách phía trên nhóm nút */
 }
 
-button:hover {
-    background-color: #0056b3;
+.button-group button {
+    padding: 6px 14px; /* Kích thước nút */
+    font-size: 16px; /* Cỡ chữ */
+    border: none; /* Bỏ viền */
+    border-radius: 5px; /* Bo góc */
+    cursor: pointer; /* Hiệu ứng con trỏ */
+    transition: background-color 0.3s; /* Hiệu ứng hover */
 }
 
-button[type="button"] {
-    background-color: #cccccc;
-    color: #333333;
+.button-group button:nth-child(1) {
+    background-color: #3852c4; /* Màu xanh (Lưu) */
+    color: white;
 }
 
-button[type="button"]:hover {
-    background-color: #999999;
+.button-group button:nth-child(2) {
+    background-color: #3852c4; /* Màu vàng (Lưu và thêm) */
+    color: white;
 }
+
+.button-group button:nth-child(3) {
+    background-color: #3852c4; /* Màu đỏ (Hủy) */
+    color: white;
+}
+
+.button-group button:hover {
+    opacity: 0.8; /* Hiệu ứng hover */
+}
+
 
 p {
     font-size: 14px;

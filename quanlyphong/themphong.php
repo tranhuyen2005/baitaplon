@@ -58,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm phòng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/baiTapLon/quanlyphong/themphong.css">
 </head>
 <body>
@@ -100,11 +101,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="address_room">Địa chỉ phòng:</label>
             <input type="text" id="address_room" name="address_room" required>
         </div>
-        <div>
+        <div class="button-group">
             <button type="submit" name="submit_action" value="save">Lưu</button>
             <button type="submit" name="submit_action" value="save_and_add">Lưu và thêm phòng khác</button>
             <button type="button" onclick="window.location.href='/baitaplon/quanlyphong/quanlyphong.php?facility_id=<?php echo isset($_POST['facility_id']) ? $_POST['facility_id'] : ''; ?>'">Hủy</button>
         </div>
+
     </form>
 </div>
 </body>
