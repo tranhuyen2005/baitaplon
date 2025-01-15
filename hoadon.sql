@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2025 at 09:20 AM
+-- Generation Time: Jan 15, 2025 at 06:43 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +43,6 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`id`, `room_id`, `facility_id`, `tien_phong`, `phi_dich_vu`, `tien_nuoc`, `tien_dien`, `tinh_trang`) VALUES
-(1, 4, 1, 2000000.00, 200000.00, 100000.00, 300000.00, 'Chưa thanh toán'),
 (2, 5, 2, 3000000.00, 150000.00, 130000.00, 320000.00, 'Đã thanh toán');
 
 --
@@ -75,7 +74,7 @@ ALTER TABLE `hoadon`
 -- Constraints for table `hoadon`
 --
 ALTER TABLE `hoadon`
-  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+  ADD CONSTRAINT `hoadon_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

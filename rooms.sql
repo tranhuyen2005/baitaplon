@@ -3,9 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+<<<<<<< HEAD
 -- Generation Time: Jan 15, 2025 at 06:42 PM
+=======
+-- Generation Time: Jan 15, 2025 at 06:44 PM
+>>>>>>> 7a3c9e49543efa7bdbeceaf1191f5bbd423aaf04
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,9 +46,13 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `room_name`, `so_nguoi_o`, `price`, `status`, `address_room`, `facility_id`) VALUES
+<<<<<<< HEAD
 (4, '101', 2, 2000000.00, 'Đã cho thuê', 'Triều Khúc, Thanh Xuân, Hà Nội', 1),
 (5, '201', 3, 3000000.00, 'Đã cho thuê', 'Quận 1, Hồ Chí Minh', 2),
 (7, '102', 2, 2000000.00, 'Còn trống', 'Triều Khúc, Thanh Xuân, Hà Nội', 1);
+=======
+(5, '201', 3, 3000000.00, 'Đã cho thuê', 'Quận 1, Hồ Chí Minh', 2);
+>>>>>>> 7a3c9e49543efa7bdbeceaf1191f5bbd423aaf04
 
 --
 -- Indexes for dumped tables
