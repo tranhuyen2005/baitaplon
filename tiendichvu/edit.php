@@ -61,86 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Dịch Vụ</title>
     <link rel="stylesheet" href="dichvu.css">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            width: 50%;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        label {
-            font-weight: bold;
-            color: #333;
-        }
-
-        input {
-            padding: 12px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 100%;
-        }
-
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-
-        button {
-            padding: 12px;
-            font-size: 16px;
-            background-color:rgb(76, 96, 175);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color:rgb(76, 96, 175);
-        }
-
-        .error {
-            color: red;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-
-        a {
-            text-decoration: none;
-            color:rgb(76, 96, 175);
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="/baiTapLon/tiendichvu/edit.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -153,17 +75,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <!-- Form sửa dịch vụ -->
         <form method="POST">
-            <label for="name">Tên Dịch Vụ:</label>
-            <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($service['name']); ?>" required>
+        <div class="input-group">
+                <i class="fas fa-cogs"></i>
+                <label for="name">Tên Dịch Vụ:</label>
+                <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($service['name']); ?>" required>
+            </div>
 
-            <label for="price">Giá Tiền:</label>
-            <input type="number" id="price" name="price" value="<?php echo htmlspecialchars($service['price']); ?>" min="0" required>
+            <div class="input-group">
+                <i class="fas fa-dollar-sign"></i>
+                <label for="price">Giá Tiền:</label>
+                <input type="number" id="price" name="price" value="<?php echo htmlspecialchars($service['price']); ?>" min="0" required>
+            </div>
 
-            <label for="unit">Đơn Vị:</label>
-            <input type="text" id="unit" name="unit" value="<?php echo htmlspecialchars($service['unit']); ?>" required>
+            <div class="input-group">
+                <i class="fas fa-weight"></i>
+                <label for="unit">Đơn Vị:</label>
+                <input type="text" id="unit" name="unit" value="<?php echo htmlspecialchars($service['unit']); ?>" required>
+            </div>
 
             <button type="submit">Lưu</button>
-            <a href="dichvu.php">Hủy</a>
+            <button type="button" onclick="window.location.href='dichvu.php'">Hủy</button>
         </form>
     </div>
 </body>

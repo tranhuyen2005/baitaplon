@@ -10,7 +10,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die("kết nối thất bại: " . $conn->connect_error);
 }
 
 // Lấy danh sách cơ sở
