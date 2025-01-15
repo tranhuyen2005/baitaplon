@@ -1,111 +1,90 @@
-/* thuephong.css */
-
-/* Chỉ định một số thuộc tính cơ bản cho form */
 body {
     font-family: Arial, sans-serif;
-    background-color: #cee2f6;
+    background-color: #cee2f6; /* Màu nền của trang */
     margin: 0;
     padding: 0;
 }
 
 .container {
-    width: 50%;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Giới hạn chiều rộng của container */
+    margin: 30px auto; /* Căn giữa nội dung theo chiều ngang và tạo khoảng cách trên dưới là 30px */
+    background-color: #ffffff; /* Màu nền của container */
+    padding: 20px; /* Khoảng cách giữa nội dung và viền container */
+    border-radius: 8px; /* Góc bo tròn cho container */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Thêm độ bóng với khoảng cách và mờ */
 }
 
 h1 {
-    text-align: center;
-    color: #333;
+    color: #333; /* Màu chữ của tiêu đề */
+    text-align: center; /* Căn giữa tiêu đề */
 }
 
-h2 {
-    color: #555;
+.form-label {
+    font-weight: bold; /* Đậm chữ cho nhãn */
+    display: block; /* Đảm bảo nhãn chiếm toàn bộ chiều rộng của thẻ chứa */
+    margin-bottom: 5px; /* Khoảng cách giữa nhãn và ô nhập liệu */
 }
 
-p {
-    color: #777;
+.form-control {
+    width: 100%; /* Đảm bảo ô nhập liệu chiếm toàn bộ chiều rộng của container */
+    padding: 10px; /* Khoảng cách giữa nội dung và viền ô nhập liệu */
+    border: 1px solid #ccc; /* Viền mỏng màu xám */
+    border-radius: 4px; /* Bo góc cho ô nhập liệu */
+    margin-bottom: 10px; /* Khoảng cách giữa các ô nhập liệu */
+    box-sizing: border-box; /* Tính cả viền và padding vào kích thước tổng thể */
+    font-size: 18px; /* Kích thước font chữ */
 }
 
-/* Định dạng các nhóm label và input */
-.form-group {
-    margin-bottom: 15px;
+.form-select {
+    width: 100%; /* Đảm bảo select chiếm toàn bộ chiều rộng của container */
+    padding: 10px; /* Khoảng cách giữa nội dung và viền select */
+    border: 1px solid #ccc; /* Viền màu xám */
+    border-radius: 4px; /* Bo góc cho select */
+    margin-bottom: 10px; /* Khoảng cách dưới select */
+    box-sizing: border-box; /* Tính cả viền và padding vào kích thước tổng thể */
+    font-size: 16px; /* Kích thước font chữ */
 }
 
-.form-group label {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #555;
+.btn {
+    display: inline-block; /* Hiển thị nút dưới dạng inline-block */
+    padding: 10px 20px; /* Padding cho nút */
+    border-radius: 4px; /* Bo góc cho nút */
+    font-size: 16px; /* Kích thước font chữ */
+    cursor: pointer; /* Con trỏ chuột chuyển thành biểu tượng "bàn tay" khi di chuột lên nút */
+    text-decoration: none; /* Không có gạch chân */
+    text-align: center; /* Căn giữa chữ trong nút */
 }
 
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.btn-primary {
+    background-color: #007bff; /* Màu nền của nút chính */
+    color: #fff; /* Màu chữ */
+    border: none; /* Không viền */
 }
 
-/* Tạo khoảng cách cho các button */
-.form-actions {
-    text-align: center;
-    margin-top: 20px;
+.btn-primary:hover {
+    background-color: #0056b3; /* Màu nền chuyển khi hover */
 }
 
-.form-actions button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 5px;
-    transition: background-color 0.3s;
+.btn-secondary {
+    background-color: #6c757d; /* Màu nền của nút phụ */
+    color: #fff; /* Màu chữ */
+    border: none; /* Không viền */
 }
 
-.form-actions button:hover {
-    background-color: #3852c4;
+.btn-secondary:hover {
+    background-color: #5a6268; /* Màu nền chuyển khi hover */
 }
 
-.form-actions button[type="button"] {
-    background-color:#3852c4 ;
+.mb-3 {
+    margin-bottom: 15px; /* Khoảng cách dưới mỗi phần tử */
 }
 
-.form-actions button[type="button"]:hover {
-    background-color: #3852c4;
+.readonly-input {
+    background-color: #f7f7f7; /* Màu nền cho các ô input readonly */
+    cursor: not-allowed; /* Con trỏ chuột thay đổi khi di chuột vào các ô readonly */
 }
 
-/* Định dạng cho các icon */
-.form-group label i {
-    margin-right: 8px;
-    color: #007bff;
-}
-
-/* Định dạng các button trong form */
-button {
-    cursor: pointer;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    opacity: 0.8;
-}
-
-button[type="button"] {
-    opacity: 0.8;
-}
-button[type="button"]:hover {
-    opacity: 0.8;
+/* Thêm một số padding và margin cho các phần tử */
+.container form {
+    margin-top: 20px; /* Khoảng cách trên form */
 }

@@ -1,21 +1,15 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "baiTapLon";
-
-// Kết nối cơ sở dữ liệu
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$conn = mysqli_connect("localhost", "root", "", "baiTapLon");
+if ($conn->connect_errno) {
+    die("Kết nối không thành công: " . $conn->connect_errno);
 }
 
-// Lấy `room_id` từ URL
-$room_id = isset($_GET['room_id']) ? intval($_GET['room_id']) : 0;
+// Lấy danh sách phòng trống
+$sql = "SELECT * FROM rooms WHERE status = 'vacant'";
+$result = $conn->query($sql);
 
-// Xử lý form gửi lên
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $room_id = $_POST['room_id'];
+// Xử lý khi người dùng gửi form đặt phòng
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tenant_name = $_POST['tenant_name'];
     $dob = $_POST['dob'];
     $phone = $_POST['phone'];
@@ -23,30 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $address = $_POST['address'];
     $checkin_date = $_POST['checkin_date'];
 
-    // Thêm khách thuê
-    $insert_tenant = $conn->prepare("INSERT INTO tenants (room_id, tenant_name, dob, phone, cccd, address, checkin_date, status) 
-                                     VALUES (?, ?, ?, ?, ?, ?, ?, 'Đang ở')");
-    $insert_tenant->bind_param("issssss", $room_id, $tenant_name, $dob, $phone, $cccd, $address, $checkin_date);
+    // Câu lệnh SQL để thêm thông tin khách thuê vào bảng tenants
+    $sql = "INSERT INTO tenants (room_id, tenant_name, dob, phone, cccd, address, checkin_date, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, 'occupied')";
 
-    if ($insert_tenant->execute()) {
-        // Cập nhật trạng thái phòng
-        $update_room = $conn->prepare("UPDATE rooms SET status = 'Đã cho thuê' WHERE id = ?");
-        $update_room->bind_param("i", $room_id);
-        if ($update_room->execute()) {
-            echo "Thuê phòng thành công!";
-            header("Location: quanlyphong.php?facility_id=" . $_POST['facility_id']);
-            exit();
-        } else {
-            echo "Lỗi khi cập nhật trạng thái phòng: " . $conn->error;
-        }
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("issssss", $_POST['room_id'], $tenant_name, $dob, $phone, $cccd, $address, $checkin_date);
+        $stmt->execute();
+        echo "Đặt phòng thành công!";
+        $stmt->close();
     } else {
-        echo "Lỗi khi thêm khách thuê: " . $conn->error;
+        echo "Lỗi: Không thể thực thi câu lệnh SQL!";
     }
 }
-
-// Lấy thông tin phòng để hiển thị
-$room_info = $conn->query("SELECT room_name, address_room, price FROM rooms WHERE id = $room_id")
-->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -54,53 +37,68 @@ $room_info = $conn->query("SELECT room_name, address_room, price FROM rooms WHER
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thuê Phòng</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Đặt Phòng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/baiTapLon/quanlyphong/thuephong.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Thuê Phòng</h1>
-        <?php if ($room_info): ?>
-            <h2>Phòng: <?php echo $room_info['room_name']; ?></h2>
-            <p>Địa chỉ: <?php echo $room_info['address_room']; ?></p>
-            <p>Giá: <?php echo number_format($room_info['price'], 0, ',', '.'); ?> VND</p>
-        <?php else: ?>
-            <p>Phòng không tồn tại.</p>
-        <?php endif; ?>
 
-        <form action="thuephong.php" method="POST">
-        <input type="hidden" name="room_id" value="<?php echo $room_id; ?>" />
-            <div class="form-group">
-                <label for="tenant_name"><i class="fas fa-user"></i> Tên khách thuê:</label>
-                <input type="text" id="tenant_name" name="tenant_name" required>
-            </div>
-            <div class="form-group">
-                <label for="dob"><i class="fas fa-birthday-cake"></i> Ngày sinh:</label>
-                <input type="date" id="dob" name="dob">
-            </div>
-            <div class="form-group">
-                <label for="phone"><i class="fas fa-phone"></i> Số điện thoại:</label>
-                <input type="text" id="phone" name="phone">
-            </div>
-            <div class="form-group">
-                <label for="cccd"><i class="fas fa-id-card"></i> CMND/CCCD:</label>
-                <input type="text" id="cccd" name="cccd">
-            </div>
-            <div class="form-group">
-                <label for="address"><i class="fas fa-home"></i> Địa chỉ:</label>
-                <input type="text" id="address" name="address">
-            </div>
-            <div class="form-group">
-                <label for="checkin_date"><i class="fas fa-calendar-day"></i> Ngày nhận phòng:</label>
-                <input type="date" id="checkin_date" name="checkin_date" required>
-            </div>
-            <div class="form-actions">
-                <button type="submit">Xác nhận thuê</button>
-                <button type="button" onclick="window.location.href='/baitaplon/quanlyphong/quanlyphong.php?facility_id=<?php echo isset($_POST['facility_id']) ? $_POST['facility_id'] : ''; ?>'">Hủy</button>
-        </form>
+    <h2>Thông tin của phòng</h2>
+
+    <!-- Hiển thị danh sách phòng trống -->
+    <?php while ($row = $result->fetch_assoc()) { ?>
+        <p>Phòng: <?= $row['room_name'] ?></p>
+        <p>Địa chỉ: <?= $row['address_room'] ?></p>
+        <p>Giá: <?= number_format($row['price'], 0, ',', '.') ?> VND</p>
+        <hr>
+    <?php } ?>
+
+    <h2>Điền thông tin khách</h2>
+
+    <form action="thuephong.php" method="POST">
+    <form action="thuephong.php" method="POST">
+    <div class="form-group">
+        <label for="room_id"><i class="fas fa-bed"></i> Phòng:</label>
+        <input type="text" name="room_id" id="room_id" value="101" disabled>
     </div>
+
+    <div class="form-group">
+        <label for="tenant_name"><i class="fas fa-user"></i> Họ và tên:</label>
+        <input type="text" name="tenant_name" id="tenant_name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="dob"><i class="fas fa-birthday-cake"></i> Ngày sinh:</label>
+        <input type="date" name="dob" id="dob">
+    </div>
+
+    <div class="form-group">
+        <label for="phone"><i class="fas fa-phone-alt"></i> Số điện thoại:</label>
+        <input type="text" name="phone" id="phone">
+    </div>
+
+    <div class="form-group">
+        <label for="cccd"><i class="fas fa-id-card"></i> Căn cước công dân:</label>
+        <input type="text" name="cccd" id="cccd">
+    </div>
+
+    <div class="form-group">
+        <label for="address"><i class="fas fa-map-marker-alt"></i> Địa chỉ:</label>
+        <input type="text" name="address" id="address">
+    </div>
+
+    <div class="form-group">
+        <label for="checkin_date"><i class="fas fa-calendar-day"></i> Ngày nhận phòng:</label>
+        <input type="date" name="checkin_date" id="checkin_date" required>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit">Đặt Phòng</button>
+        <button type="button" onclick="window.history.back();">Hủy</button>
+    </div>
+</form>
+
+    </form>
+
 </body>
 </html>
-
-<?php $conn->close(); ?>

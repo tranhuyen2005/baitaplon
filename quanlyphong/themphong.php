@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "baitaplon";
+$dbname = "baiTapLon";
 
 // Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "Giá phòng phải là số dương.";
     } else {
         $insert_sql = $conn->prepare("INSERT INTO rooms (room_name, so_nguoi_o, address_room, price, status, facility_id) 
-                                      VALUES (?, ?, ?, ?, 'Còn trống', ?)");
+                                      VALUES (?, ?, ?, ?, 'vacant', ?)");
         $insert_sql->bind_param("sisdi", $room_name, $so_nguoi_o, $address_room, $price, $facility_id);
 
         if ($insert_sql->execute()) {
