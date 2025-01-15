@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['fullname'] = $user['fullname'];
 
                 // Chuyển hướng đến trang chính
-                header("Location: index.php");
+                header("Location:/baiTapLon/trangchu/trangchu.php");
                 exit();
             } else {
                 $message = "Mật khẩu không đúng!";

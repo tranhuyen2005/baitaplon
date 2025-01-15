@@ -25,8 +25,7 @@
         <div class="header">
             <h1>Quản Lý Nhà Trọ</h1>
             <div class="admin-info">
-                <span>Xin chào, Admin</span>
-                <button class="logout-btn">Đăng xuất</button>
+            <button class="logout-btn" id="logoutButton">Đăng xuất</button>
             </div>
         </div>
 
@@ -55,6 +54,7 @@
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
         const content = document.querySelector('.content');
+        const logoutButton = document.getElementById('logoutButton');
 
         menuToggle.addEventListener('click', () => {
             sidebar.classList.toggle('visible');
@@ -63,6 +63,11 @@
             } else {
                 content.style.marginLeft = '0';
             }
+        });
+
+        logoutButton.addEventListener('click', () => {
+            // Chuyển hướng về trang đăng nhập
+            window.location.href = '/baiTapLon/dangnhap/dangnhap.php';
         });
     </script>
 </body>
