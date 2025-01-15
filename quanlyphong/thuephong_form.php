@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thuê phòng</title>
-    <link rel="stylesheet" href="/baiTapLon/quanlyphong/thuephong_form.css">
+    <link rel="stylesheet"href="/baitaplon/quanlyphong/thuephong_form.css">
 </head>
 <body>
 <?php

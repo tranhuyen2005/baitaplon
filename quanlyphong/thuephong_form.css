@@ -21,6 +21,8 @@
     max-width: 500px;
     width: 90%;
     overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 80vh;
 }
 
 .close-btn {
@@ -42,6 +44,7 @@
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
+    overflow-y: auto;
 }
 
 .modal-content h2 {

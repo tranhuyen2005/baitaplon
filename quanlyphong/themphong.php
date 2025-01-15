@@ -69,7 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
 </head>
 <body>
-    <h1>Thêm Phòng Mới  <span class="close-btn" onclick="closeModal()">X</span></h1>
+<span class="close-btn" onclick="closeModal()">X</span>
+    <h1>Thêm Phòng Mới</h1>
     
     <form action="themphong.php" method="POST" enctype="multipart/form-data">
         <label for="facility_id">Chọn Cơ Sở:</label>
