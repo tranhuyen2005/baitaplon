@@ -22,79 +22,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Dịch Vụ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-
-        input {
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
-
-        button {
-            padding: 10px;
-            background-color:rgb(76, 96, 175);
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color:rgb(76, 96, 175);
-        }
-
-        a {
-            text-decoration: none;
-            color:rgb(76, 96, 175);
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="/baiTapLon/tiendichvu/add.css">
+    <!-- Add Font Awesome CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
-    <h2>Thêm Dịch Vụ</h2>
-    <form method="POST">
-        <input type="text" name="name" placeholder="Tên dịch vụ" required>
-        <input type="number" name="price" placeholder="Giá tiền" required>
-        <input type="text" name="unit" placeholder="Đơn vị" required>
-        <button type="submit">Thêm</button>
-    </form>
+    <div class="container">
+        <form method="POST">
+            <h2>Thêm Dịch Vụ</h2>
+            
+            <!-- Tên dịch vụ input -->
+            <div class="input-group">
+                <i class="fas fa-cogs"></i> <!-- Service icon -->
+                <input type="text" name="name" placeholder="Tên dịch vụ" required>
+            </div>
+            
+            <!-- Giá tiền input -->
+            <div class="input-group">
+                <i class="fas fa-dollar-sign"></i> <!-- Dollar sign icon -->
+                <input type="number" name="price" placeholder="Giá tiền" required>
+            </div>
+            
+            <!-- Đơn vị input -->
+            <div class="input-group">
+                <i class="fas fa-weight-hanging"></i> <!-- Unit icon -->
+                <input type="text" name="unit" placeholder="Đơn vị" required>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit">
+                <i class="fas fa-plus-circle"></i> Thêm <!-- Plus circle icon -->
+            </button>
+        </form>
+    </div>
 </body>
+
 </html>
