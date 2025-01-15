@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2025 at 09:20 AM
+-- Generation Time: Jan 15, 2025 at 06:44 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,7 +44,6 @@ CREATE TABLE `tenants` (
 --
 
 INSERT INTO `tenants` (`id`, `room_id`, `tenant_name`, `dob`, `phone`, `cccd`, `address`, `checkin_date`, `status`) VALUES
-(1, 4, 'Trần Huyền', '2016-01-06', '123456789', '00120514525', 'Sóc Sơn, Hà Nội', '2025-01-01', 'Đang ở'),
 (2, 5, 'Lan Hương', '2019-12-04', '25188614851', '00132548845', 'Thủy Nguyên, Hà Nội', '2025-01-01', 'Đang ở');
 
 --
@@ -76,7 +75,7 @@ ALTER TABLE `tenants`
 -- Constraints for table `tenants`
 --
 ALTER TABLE `tenants`
-  ADD CONSTRAINT `tenants_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
+  ADD CONSTRAINT `tenants_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

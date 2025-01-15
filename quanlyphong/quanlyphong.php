@@ -107,7 +107,12 @@ if (!$result) {
                                 <div class="card-actions">
                                     <a href="xem.php" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
                                     <a href="sua.php?id=<?php echo $row['room_id']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Sửa</a>
-                                    <button type="submit" class="btn custom-btn-delete"><i class="fa-solid fa-trash"></i> Xóa phòng</button>
+                                    
+                                <!-- Nút Xóa phòng -->
+                                    <a href="xoa.php?delete_id=<?php echo $row['room_id']; ?>&facility_id=<?php echo $ma_co_so; ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc muốn xóa phòng này?')">
+                                        <i class="fa-solid fa-trash"></i> Xóa phòng
+                                    </a>
+
                                     <!-- Nút thuê phòng và trả phòng -->
                                     <?php if ($row['status'] == 'vacant'): ?>
                                         <a href="thue_phong.php?id=<?php echo $row['room_id']; ?>" class="btn btn-success"><i class="fa-solid fa-hand-holding"></i> Thuê phòng</a>
