@@ -20,10 +20,16 @@ $tu_khoa = isset($_POST['search']) ? $conn->real_escape_string($_POST['search'])
 $tinh_trang = isset($_POST['status']) ? $conn->real_escape_string($_POST['status']) : '';
 
 // Xây dựng câu truy vấn danh sách phòng
-$sql = "SELECT r.id AS room_id, r.room_name, r.address_room, r.so_nguoi_o, r.price, r.status, t.tenant_name
+$sql = "SELECT r.id AS room_id, r.room_name, r.address_room, r.so_nguoi_o, r.price, 
+               CASE 
+                   WHEN t.room_id IS NOT NULL THEN 'occupied' 
+                   ELSE 'vacant' 
+               END AS status, 
+               t.tenant_name
         FROM rooms AS r
         LEFT JOIN tenants AS t ON r.id = t.room_id
         WHERE r.facility_id = $ma_co_so";
+
 
 // Thêm điều kiện tìm kiếm từ khóa
 if (!empty($tu_khoa)) {
@@ -103,6 +109,7 @@ if (!$result) {
                                     <i class="fa-solid fa-door-closed"></i> Trạng thái: 
                                     <?php echo $row['status'] == 'vacant' ? 'Còn trống' : 'Đã cho thuê'; ?>
                                 </p>
+
                                 <p class="room-price"><i class="fa-solid fa-dollar-sign"></i> Giá: <?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</p>
                                 <div class="card-actions">
                                     <a href="xem.php" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
