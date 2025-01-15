@@ -75,6 +75,7 @@ if (isset($_POST['update_room'])) {
 }
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -141,7 +142,7 @@ if (isset($_POST['update_room'])) {
                             <i class="fas fa-handshake"></i> Thuê phòng
                         </button>
                     <?php elseif ($row["status"] == "Đã cho thuê"): ?>
-                        <form action="traphong.php" method="POST" style="display:inline;">
+                        <form action="baiTapLon/quanlyphong/quanlyphong.php" method="POST" style="display:inline;">
                             <input type="hidden" name="id" value="<?php echo $row["id"]; ?>" />
                             <button type="submit" class="return-button"><i class="fas fa-undo-alt"></i> Trả phòng</button>
                         </form>
