@@ -69,17 +69,17 @@ input:focus, select:focus {
 }
 
 .button-group button:nth-child(1) {
-    background-color: #3852c4; /* Màu xanh (Lưu) */
+    background-color: #3852c4; 
     color: white;
 }
 
 .button-group button:nth-child(2) {
-    background-color: #3852c4; /* Màu vàng (Lưu và thêm) */
+    background-color: #3852c4; 
     color: white;
 }
 
 .button-group button:nth-child(3) {
-    background-color: #3852c4; /* Màu đỏ (Hủy) */
+    background-color: #3852c4;
     color: white;
 }
 
