@@ -5,42 +5,66 @@ $username = "root";
 $password = "";
 $dbname = "baiTapLon";
 
+// Tạo kết nối
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Kiểm tra kết nối
 if ($conn->connect_error) {
-    die("Kết nối thất bại: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
-// Lấy cơ sở đã chọn (mặc định là cơ sở 1 nếu không được chọn)
-$ma_co_so = isset($_POST['facility_id']) ? intval($_POST['facility_id']) : 1;
+// Lấy và kiểm tra các tham số tìm kiếm
+$search_query = isset($_GET['search_query']) ? mysqli_real_escape_string($conn, $_GET['search_query']) : '';
+$search_status = isset($_GET['search_status']) ? mysqli_real_escape_string($conn, $_GET['search_status']) : '';
+$facility_id = isset($_GET['facility_id']) ? (int)$_GET['facility_id'] : null;
 
-// Lấy từ khóa tìm kiếm và trạng thái nếu có
-$tu_khoa = isset($_POST['search']) ? $conn->real_escape_string($_POST['search']) : '';
-$tinh_trang = isset($_POST['status']) ? $conn->real_escape_string($_POST['status']) : '';
+// Kiểm tra nếu $facility_id không hợp lệ
+if (!$facility_id) {
+    echo "Vui lòng chọn cơ sở.";
+    exit;
+}
 
-// Xây dựng câu truy vấn danh sách phòng
-$sql = "SELECT * FROM hoadon WHERE facility_id = $ma_co_so";
+// Lấy dữ liệu phòng từ cơ sở dữ liệu (bao gồm cơ sở)
+$sql = "SELECT r.id AS phong_id,
+               r.room_name, 
+               r.address_room, 
+               r.price, 
+               COALESCE(t.tenant_name, 'Không có khách thuê') AS tenant_name
+        FROM rooms AS r
+        LEFT JOIN tenants AS t ON r.id = t.room_id
+        WHERE r.facility_id = $facility_id";
 
 // Thêm điều kiện tìm kiếm từ khóa
-if (!empty($tu_khoa)) {
-    $sql .= " AND (so_phong LIKE '%$tu_khoa%' OR dia_chi LIKE '%$tu_khoa%')";
+if ($search_query) {
+    $sql .= " AND (r.room_name LIKE '%$search_query%' OR r.address_room LIKE '%$search_query%')";
 }
 
-// Thêm điều kiện lọc theo trạng thái nếu có
-if (!empty($tinh_trang)) {
-    $sql .= " AND tinh_trang = '$tinh_trang'";
+// Thêm điều kiện tìm kiếm theo trạng thái
+if ($search_status) {
+    $sql .= " AND r.status = '$search_status'";
 }
 
-
-// Thực thi câu truy vấn
+// Kiểm tra và thực thi câu lệnh SQL
 $result = $conn->query($sql);
 
-// Kiểm tra xem có lỗi trong câu truy vấn hay không
-if (!$result) {
-    die("Lỗi truy vấn: " . $conn->error);
-}
+// Xử lý cập nhật thông tin phòng
+if (isset($_POST['update_room'])) {
+    $room_id = $_POST['room_id'];
+    $room_name = $_POST['room_name'];
+    $price = $_POST['price'];
+    $status = $_POST['status'];
 
+    $update_sql = "UPDATE rooms SET room_name = '$room_name', price = $price, status = '$status' WHERE id = $room_id";
+    if ($conn->query($update_sql) === TRUE) {
+        echo "Cập nhật thông tin phòng thành công!";
+    } else {
+        echo "Lỗi khi cập nhật phòng: " . $conn->error;
+    }
+
+    // Reload trang sau khi cập nhật
+    header("Location: quanlyphong.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +73,7 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản Lý Hóa Đơn</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6H4M6O2Go8hSIVp38IMjeU7b8n8fS6ttJ2klG6k5D5MZm9wewFz9c31fjf" crossorigin="anonymous">
     <link href="danhsachphong.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 <body style="background-color: #cee2f6;">
     <div class="container mt-4">
@@ -95,12 +117,12 @@ if (!$result) {
                     <div class="col-md-4 mb-4">
                         <div class="card room-card">
                             <div class="card-body">
-                                <h5 class="card-title room-number"><i class="fa-solid fa-house"></i> <?php echo htmlspecialchars($row['so_phong']); ?></h5>
-                                <p class="card-text room-address"><i class="fa-solid fa-location-dot"></i> Địa chỉ: <?php echo htmlspecialchars($row['dia_chi']); ?></p>
-                                <p class="card-text room-owner"><i class="fa-solid fa-user"></i> Chủ sở hữu: <?php echo htmlspecialchars($row['chu_so_huu']); ?></p>
+                                <h5 class="card-title room-number"><i class="fa-solid fa-house"></i> <?php echo htmlspecialchars($row['room_name']); ?></h5>
+                                <p class="card-text room-address"><i class="fa-solid fa-location-dot"></i> Địa chỉ: <?php echo htmlspecialchars($row['address']); ?></p>
+                                <p class="card-text room-owner"><i class="fa-solid fa-user"></i> Chủ sở hữu: <?php echo htmlspecialchars($row['tenant_name']); ?></p>
                                 <p class="card-text room-status <?php echo $row['tinh_trang'] == 'Đã thanh toán' ? 'status-paid' : 'status-unpaid'; ?>">
                                     <i class="fa-solid fa-money-check-dollar"></i> Trạng thái: 
-                                    <?php echo htmlspecialchars($row['tinh_trang']); ?></p>
+                                    <?php echo htmlspecialchars($row['status']); ?></p>
                                 <div class="card-actions">
                                     <a href="xemhoadon.php?id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
                                     <a href="suahoadon.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Sửa</a>
