@@ -21,42 +21,43 @@ body {
 /* Phần chứa form đăng nhập */
 .login-container {
     background: rgba(255, 255, 255, 0.9); /* Màu nền trắng nhẹ với độ trong suốt */
-    width: 400px;
-    padding: 30px;
+    width: 450px; /* Tăng chiều rộng */
+    padding: 40px; /* Tăng padding để làm cho nó rộng hơn */
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2); /* Đổ bóng */
     text-align: center;
     position: relative;
+    max-height: 500px; /* Giới hạn chiều cao */
 }
 
 /* Tiêu đề */
 .login-container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 28px; /* Tăng kích thước chữ để tiêu đề nổi bật */
+    margin-bottom: 25px; /* Tăng khoảng cách dưới tiêu đề */
     color: #333;
 }
 
 /* Nhóm input */
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px; /* Tăng khoảng cách giữa các input */
     text-align: left;
 }
 
 /* Label */
 .input-group label {
-    font-size: 14px;
+    font-size: 16px; /* Tăng kích thước chữ của label */
     color: #555;
-    margin-bottom: 5px;
+    margin-bottom: 8px; /* Tăng khoảng cách dưới label */
     display: block;
 }
 
 /* Input field */
 .input-group input {
     width: 100%;
-    padding: 10px;
+    padding: 12px; /* Tăng padding để input rộng hơn */
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: 16px; /* Tăng kích thước chữ trong input */
     outline: none;
     transition: border 0.3s ease;
 }
@@ -71,8 +72,8 @@ body {
     background-color: #4e54c8;
     color: white;
     border: none;
-    padding: 12px 20px;
-    font-size: 16px;
+    padding: 14px 25px; /* Tăng kích thước nút */
+    font-size: 18px; /* Tăng kích thước chữ của nút */
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
@@ -86,13 +87,14 @@ body {
 
 /* Liên kết tới trang đăng ký */
 .register-link {
-    margin-top: 15px;
+    margin-top: 20px; /* Tăng khoảng cách trên liên kết */
 }
 
 .register-link a {
     color: #4e54c8;
     text-decoration: none;
     font-weight: bold;
+    font-size: 16px; /* Tăng kích thước chữ của liên kết */
 }
 
 .register-link a:hover {
@@ -101,7 +103,7 @@ body {
 
 /* Thông báo */
 .message-container {
-    margin-bottom: 15px;
-    font-size: 14px;
+    margin-bottom: 20px; /* Tăng khoảng cách dưới thông báo */
+    font-size: 16px; /* Tăng kích thước chữ của thông báo */
     color: #d9534f; /* Màu đỏ cho lỗi */
 }

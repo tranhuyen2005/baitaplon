@@ -25,12 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Thêm khách thuê
     $insert_tenant = $conn->prepare("INSERT INTO tenants (room_id, tenant_name, dob, phone, cccd, address, checkin_date, status) 
-                                     VALUES (?, ?, ?, ?, ?, ?, ?, 'Đang ở')");
+                                     VALUES (?, ?, ?, ?, ?, ?, ?, 'occupied')");
     $insert_tenant->bind_param("issssss", $room_id, $tenant_name, $dob, $phone, $cccd, $address, $checkin_date);
 
     if ($insert_tenant->execute()) {
         // Cập nhật trạng thái phòng
-        $update_room = $conn->prepare("UPDATE rooms SET status = 'Đã cho thuê' WHERE id = ?");
+        $update_room = $conn->prepare("UPDATE rooms SET status = 'occupied' WHERE id = ?");
         $update_room->bind_param("i", $room_id);
         if ($update_room->execute()) {
             echo "Thuê phòng thành công!";
@@ -55,6 +55,7 @@ $room_info = $conn->query("SELECT room_name, address_room, price FROM rooms WHER
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thuê Phòng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/baiTapLon/quanlyphong/thuephong.css">
 </head>
 <body>
