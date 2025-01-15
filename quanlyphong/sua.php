@@ -68,30 +68,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sửa Thông Tin Phòng</title>
-    <link rel="stylesheet"href="sua.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet"href="/baiTapLon/quanlyphong/sua.css">
 </head>
 <body>
     <div class="container mt-4">
         <h1 class="text-center text-primary">Sửa Thông Tin Phòng</h1>
         <form method="POST" action="">
             <div class="mb-3">
-                <label for="room_name" class="form-label">Tên Phòng</label>
+                <label for="room_name" class="form-label">
+                    <i class="fa-solid fa-house"></i>Tên Phòng</label>
                 <input type="text" class="form-control" id="room_name" name="room_name" value="<?php echo htmlspecialchars($room['room_name']); ?>" required>
             </div>
             <div class="mb-3">
-                <label for="address_room" class="form-label">Địa Chỉ</label>
+                <label for="address_room" class="form-label">
+                    <i class="fa-solid fa-location-dot"></i>Địa Chỉ</label>
                 <input type="text" class="form-control" id="address_room" name="address_room" value="<?php echo htmlspecialchars($room['address_room']); ?>" readonly>
             </div>
             <div class="mb-3">
-                <label for="so_nguoi_o" class="form-label">Số Người Ở</label>
+                <label for="so_nguoi_o" class="form-label">
+                    <i class="fa-solid fa-users"></i>Số Người Ở</label>
                 <input type="number" class="form-control" id="so_nguoi_o" name="so_nguoi_o" value="<?php echo $room['so_nguoi_o']; ?>" required>
             </div>
             <div class="mb-3">
-                <label for="price" class="form-label">Giá Phòng (VNĐ)</label>
+                <label for="price" class="form-label">
+                    <i class="fa-solid fa-dollar-sign"></i>Giá Phòng (VNĐ)</label>
                 <input type="number" class="form-control" id="price" name="price" value="<?php echo $room['price']; ?>" required>
             </div>
             <div class="mb-3">
-                <label for="status" class="form-label">Trạng Thái</label>
+                <label for="status" class="form-label">
+                    <i class="fa-solid fa-circle-info"></i>Trạng Thái</label>
                 <select class="form-select" id="status" name="status">
                     <option value="vacant" <?php echo $room['status'] == 'vacant' ? 'selected' : ''; ?>>Còn trống</option>
                     <option value="occupied" <?php echo $room['status'] == 'occupied' ? 'selected' : ''; ?>>Đã có người thuê</option>
