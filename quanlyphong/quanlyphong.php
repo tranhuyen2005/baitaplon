@@ -84,6 +84,7 @@ if (isset($_POST['update_room'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý Phòng</title>
     <link rel="stylesheet" href="quanlyphong.css">
+    <link rel="stylesheet" href="/baiTapLon/quanlyphong/sua.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -251,9 +252,8 @@ $(document).ready(function () {
         $("#modal").fadeOut();
     }
 </script> 
-
 <script>
-    function openModal(roomId) {
+function openModal(roomId) {
     // Hiển thị overlay và modal
     $("#overlay").fadeIn();
     $("#modal").fadeIn();
@@ -272,6 +272,11 @@ $(document).ready(function () {
     });
 }
 
+function closeModal() {
+    $("#overlay").fadeOut();
+    $("#modal").fadeOut();
+    $("#modal-body").html(""); // Xóa nội dung modal
+}
 </script>
 
 
