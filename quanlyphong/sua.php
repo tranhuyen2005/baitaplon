@@ -19,6 +19,7 @@ if (isset($_GET['room_id'])) {
         $row = $result->fetch_assoc();
         ?>
         <form id="edit-room-form" method="POST" action="quanlyphong.php">
+            <h2>Sửa thông tin phòng</h2>
             <input type="hidden" name="room_id" value="<?php echo $row['id']; ?>">
             <label for="room_name">Tên phòng:</label>
             <input type="text" name="room_name" id="room_name" value="<?php echo $row['room_name']; ?>" required>
@@ -32,8 +33,11 @@ if (isset($_GET['room_id'])) {
                 <option value="Đã cho thuê" <?php echo $row['status'] == 'Đã cho thuê' ? 'selected' : ''; ?>>Đã cho thuê</option>
             </select>
             
-            <button type="submit" name="update_room">Cập nhật</button>
-            <button type="button" onclick="closeModal()">Hủy</button>
+            <div class="form-buttons">
+    <button type="submit" name="update_room">Cập nhật</button>
+    <button type="button" onclick="closeModal()">Hủy</button>
+</div>
+
         </form>
         <?php
     } else {
