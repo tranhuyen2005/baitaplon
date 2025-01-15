@@ -1,97 +1,86 @@
-/* Overlay che toàn màn hình */
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Màu tối mờ */
-    z-index: 9998;
-    display: none; /* Ẩn ban đầu */
-}
-
-/* Modal chính */
-#modal {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #ceefce; /* Nền trắng */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    z-index: 9999; /* Trên overlay */
-    width: 400px; /* Chiều rộng */
-    max-width: 90%; /* Đảm bảo hiển thị tốt trên màn hình nhỏ */
-    display: none; /* Ẩn ban đầu */
-    overflow: hidden;
-}
-
-/* Nội dung modal */
-#modal .modal-content {
-    padding: 20px;
+body {
     font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
 }
 
-/* Tiêu đề modal */
-#modal h2 {
-    text-align: center; /* Canh giữa */
-    font-size: 18px;
-    margin-bottom: 20px;
-    color: #333;
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+}
+
+.form-label {
     font-weight: bold;
 }
 
-/* Nhãn (label) trong form */
-#modal form label {
-    font-weight: bold; /* In đậm */
-    display: block; /* Mỗi nhãn chiếm một dòng riêng */
-    margin-bottom: 5px; /* Khoảng cách giữa nhãn và ô nhập liệu */
-    color: #333; /* Màu chữ */
-    font-size: 14px; /* Kích thước chữ */
-}
-
-/* Form input và select */
-#modal form input[type="text"],
-#modal form input[type="number"],
-#modal form select {
+.form-control {
     width: 100%;
     padding: 10px;
-    margin: 10px 0 15px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 10px;
     box-sizing: border-box;
-    font-size: 14px;
 }
 
-/* Container chứa các nút */
-#modal form .form-buttons {
-    display: flex;
-    justify-content: flex-end; /* Căn sang phải */
-    gap: 10px; /* Khoảng cách giữa các nút */
-    margin-top: 20px; /* Khoảng cách trên nút */
-}
-
-/* Nút trong form */
-#modal form .form-buttons button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
+.form-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    text-decoration: none;
+    text-align: center;
 }
 
-#modal form .form-buttons button:hover {
-    background-color: #45a049;
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
 }
 
-/* Nút hủy */
-#modal form .form-buttons button[type="button"] {
-    background-color: #f44336;
+.btn-primary:hover {
+    background-color: #0056b3;
 }
 
-#modal form .form-buttons button[type="button"]:hover {
-    background-color: #e53935;
+.btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+.readonly-input {
+    background-color: #f7f7f7;
+    cursor: not-allowed;
+}
+
+/* Thêm một số padding và margin cho các phần tử */
+.container form {
+    margin-top: 20px;
 }
