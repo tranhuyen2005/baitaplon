@@ -1,0 +1,118 @@
+/* Thêm phong cách cho giao diện themphong.php */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    color: #555555;
+    margin-bottom: 5px;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button[type="button"] {
+    background-color: #cccccc;
+    color: #333333;
+}
+
+button[type="button"]:hover {
+    background-color: #999999;
+}
+
+p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+p[style="color: red;"] {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+p[style="color: green;"] {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Icon Styling */
+label:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-right: 8px;
+    content: "\f00a"; /* Default icon */
+    color: #007bff;
+}
+
+label[for="facility_id"]:before {
+    content: "\f1ad"; /* icon for facility */
+}
+
+label[for="room_name"]:before {
+    content: "\f015"; /* icon for room */
+}
+
+label[for="so_nguoi_o"]:before {
+    content: "\f007"; /* icon for people */
+}
+
+label[for="price"]:before {
+    content: "\f155"; /* icon for price */
+}
+
+label[for="address_room"]:before {
+    content: "\f041"; /* icon for location */
+}
