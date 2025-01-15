@@ -20,11 +20,20 @@ $tu_khoa = isset($_POST['search']) ? $conn->real_escape_string($_POST['search'])
 $tinh_trang = isset($_POST['status']) ? $conn->real_escape_string($_POST['status']) : '';
 
 // Xây dựng câu truy vấn danh sách phòng
-$sql = "SELECT * FROM hoadon WHERE facility_id = $ma_co_so";
+$sql = "SELECT h.id AS hoa_don_id,
+               h.tinh_trang, 
+               r.room_name, 
+               r.address_room, 
+               COALESCE(t.tenant_name, 'Không có khách thuê') AS tenant_name
+        FROM hoadon AS h
+        JOIN rooms AS r ON h.facility_id = r.facility_id
+        LEFT JOIN tenants AS t ON r.id = t.room_id
+        WHERE r.facility_id = $ma_co_so";
+
 
 // Thêm điều kiện tìm kiếm từ khóa
 if (!empty($tu_khoa)) {
-    $sql .= " AND (so_phong LIKE '%$tu_khoa%' OR dia_chi LIKE '%$tu_khoa%')";
+    $sql .= " AND (room_name LIKE '%$tu_khoa%' OR dia_chi LIKE '%$tu_khoa%')";
 }
 
 // Thêm điều kiện lọc theo trạng thái nếu có
@@ -95,15 +104,16 @@ if (!$result) {
                     <div class="col-md-4 mb-4">
                         <div class="card room-card">
                             <div class="card-body">
-                                <h5 class="card-title room-number"><i class="fa-solid fa-house"></i> <?php echo htmlspecialchars($row['so_phong']); ?></h5>
-                                <p class="card-text room-address"><i class="fa-solid fa-location-dot"></i> Địa chỉ: <?php echo htmlspecialchars($row['dia_chi']); ?></p>
-                                <p class="card-text room-owner"><i class="fa-solid fa-user"></i> Chủ sở hữu: <?php echo htmlspecialchars($row['chu_so_huu']); ?></p>
+                                <h5 class="card-title room-number"><i class="fa-solid fa-house"></i>Phòng: <?php echo htmlspecialchars($row['room_name']); ?></h5>
+                                <p class="card-text room-address"><i class="fa-solid fa-location-dot"></i> Địa chỉ: <?php echo htmlspecialchars($row['address_room']); ?></p>
+                                <p class="card-text room-owner"><i class="fa-solid fa-user"></i> Khách thuê: <?php echo htmlspecialchars($row['tenant_name']); ?></p>
                                 <p class="card-text room-status <?php echo $row['tinh_trang'] == 'Đã thanh toán' ? 'status-paid' : 'status-unpaid'; ?>">
                                     <i class="fa-solid fa-money-check-dollar"></i> Trạng thái: 
                                     <?php echo htmlspecialchars($row['tinh_trang']); ?></p>
                                 <div class="card-actions">
-                                    <a href="xemhoadon.php?id=<?php echo $row['id']; ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
-                                    <a href="suahoadon.php?id=<?php echo $row['id']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Sửa</a>
+                                <a href="xemhoadon.php?id=<?php echo $row['hoa_don_id']; ?>" class="btn btn-primary">Xem</a>
+                                <a href="suahoadon.php?id=<?php echo $row['hoa_don_id']; ?>" class="btn btn-warning">Sửa</a>
+
                                 </div>
                             </div>
                         </div>
