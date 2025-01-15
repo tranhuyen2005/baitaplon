@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 15, 2025 at 09:20 AM
+-- Generation Time: Jan 15, 2025 at 06:44 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,6 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`id`, `room_name`, `so_nguoi_o`, `price`, `status`, `address_room`, `facility_id`) VALUES
-(4, '101', 2, 2000000.00, 'Còn trống', 'Triều Khúc, Thanh Xuân, Hà Nội', 1),
 (5, '201', 3, 3000000.00, 'Đã cho thuê', 'Quận 1, Hồ Chí Minh', 2);
 
 --
@@ -64,7 +63,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
