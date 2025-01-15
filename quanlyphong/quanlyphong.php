@@ -122,7 +122,7 @@ if (!$result) {
 
                                     <!-- Nút thuê phòng và trả phòng -->
                                     <?php if ($row['status'] == 'vacant'): ?>
-                                        <a href="thue_phong.php?id=<?php echo $row['room_id']; ?>" class="btn btn-success"><i class="fa-solid fa-hand-holding"></i> Thuê phòng</a>
+                                        <a href="thuephong.php?id=<?php echo $row['room_id']; ?>" class="btn btn-success"><i class="fa-solid fa-hand-holding"></i> Thuê phòng</a>
                                     <?php else: ?>
                                         <a href="tra_phong.php?id=<?php echo $row['room_id']; ?>" class="btn btn-danger"><i class="fa-solid fa-arrow-right-to-bracket"></i> Trả phòng</a>
                                     <?php endif; ?>
