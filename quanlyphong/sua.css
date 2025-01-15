@@ -16,7 +16,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: #fff; /* Nền trắng */
+    background: #ceefce; /* Nền trắng */
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     z-index: 9999; /* Trên overlay */
@@ -32,42 +32,22 @@
     font-family: Arial, sans-serif;
 }
 
-/* Nút đóng modal */
-#modal .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+/* Tiêu đề modal */
+#modal h2 {
+    text-align: center; /* Canh giữa */
+    font-size: 18px;
+    margin-bottom: 20px;
     color: #333;
+    font-weight: bold;
 }
 
-/* Nút trong form */
-#modal form button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-#modal form button:hover {
-    background-color: #45a049;
-}
-
-/* Nút hủy */
-#modal form button[type="button"] {
-    background-color: #f44336;
-    margin-left: 10px;
-}
-
-#modal form button[type="button"]:hover {
-    background-color: #e53935;
+/* Nhãn (label) trong form */
+#modal form label {
+    font-weight: bold; /* In đậm */
+    display: block; /* Mỗi nhãn chiếm một dòng riêng */
+    margin-bottom: 5px; /* Khoảng cách giữa nhãn và ô nhập liệu */
+    color: #333; /* Màu chữ */
+    font-size: 14px; /* Kích thước chữ */
 }
 
 /* Form input và select */
@@ -76,8 +56,42 @@
 #modal form select {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 0 15px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    font-size: 14px;
+}
+
+/* Container chứa các nút */
+#modal form .form-buttons {
+    display: flex;
+    justify-content: flex-end; /* Căn sang phải */
+    gap: 10px; /* Khoảng cách giữa các nút */
+    margin-top: 20px; /* Khoảng cách trên nút */
+}
+
+/* Nút trong form */
+#modal form .form-buttons button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#modal form .form-buttons button:hover {
+    background-color: #45a049;
+}
+
+/* Nút hủy */
+#modal form .form-buttons button[type="button"] {
+    background-color: #f44336;
+}
+
+#modal form .form-buttons button[type="button"]:hover {
+    background-color: #e53935;
 }
