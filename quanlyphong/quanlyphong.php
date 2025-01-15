@@ -112,7 +112,7 @@ if (!$result) {
 
                                 <p class="room-price"><i class="fa-solid fa-dollar-sign"></i> Giá: <?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</p>
                                 <div class="card-actions">
-                                    <a href="xem.php" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
+                                    <a href="xem.php?id=<?php echo $row['room_id']; ?>" class="btn btn-primary"><i class="fa-solid fa-eye"></i> Xem</a>
                                     <a href="sua.php?id=<?php echo $row['room_id']; ?>" class="btn btn-warning"><i class="fa-solid fa-pen"></i> Sửa</a>
                                     
                                 <!-- Nút Xóa phòng -->

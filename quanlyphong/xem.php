@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 // Lấy thông tin phòng
-$room_id = isset($_GET['room_id']) ? intval($_GET['room_id']) : null;
+$room_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $sql_room = "SELECT * FROM rooms WHERE id = '$room_id'";
 $result_room = $conn->query($sql_room);
 $room = $result_room->fetch_assoc();
@@ -20,16 +20,11 @@ $room = $result_room->fetch_assoc();
 if (!$room) {
     die("Không tìm thấy thông tin phòng.");
 }
-// Lấy thông tin ảnh từ bảng images
-$sql_images = "SELECT * FROM images";
-$result_image = $conn->query($sql_images);
-
-
 
 // Chỉ lấy thông tin khách thuê nếu trạng thái phòng không phải 'empty'
 $tenant = null;
-if ($room['status'] != 'empty') {
-    $sql_guest = "SELECT * FROM tenants WHERE room_id = '$room_id' AND status = 'active'";
+if ($room['status'] != 'vacant') {
+    $sql_guest = "SELECT * FROM tenants WHERE room_id = '$room_id' AND status = 'occupied'";
     $result_guest = $conn->query($sql_guest);
     $tenant = $result_guest->fetch_assoc();
 }
@@ -53,7 +48,7 @@ if ($room['status'] != 'empty') {
             <div class="col-md-6">
                 <div class="info-container">
                     <h3>Thông Tin Khách Thuê</h3>
-                    <?php if ($room['status'] == 'empty'): ?>
+                    <?php if ($room['status'] == 'vacant'): ?>
                         <p>Phòng đang trống, không có khách thuê.</p>
                     <?php elseif ($tenant): ?>
                         <p><strong>Tên khách thuê:</strong> <?php echo $tenant['tanent-name']; ?></p>
@@ -61,9 +56,7 @@ if ($room['status'] != 'empty') {
                         <p><strong>CMND:</strong> <?php echo $tenant['cccd']; ?></p>
                         <p><strong>Địa chỉ:</strong> <?php echo $tenant['address']; ?></p>
                         <p><strong>Ngày thuê:</strong> <?php echo $tenant['checkin_date']; ?></p>
-                        <?php if ($tenant['checkout_date']): ?>
-                            <p><strong>Ngày trả phòng:</strong> <?php echo $tenant['checkout_date']; ?></p>
-                        <?php endif; ?>
+                        
                     <?php else: ?>
                         <p>Không tìm thấy thông tin khách thuê.</p>
                     <?php endif; ?>
@@ -75,24 +68,14 @@ if ($room['status'] != 'empty') {
                 <div class="info-container">
                     <h3>Thông Tin Phòng</h3>
                     <p><strong>Tên phòng:</strong> <?php echo $room['room_name']; ?></p>
-                    <p><strong>Địa chỉ:</strong> <?php echo $room['address']; ?></p>
+                    <p><strong>Địa chỉ:</strong> <?php echo $room['address_room']; ?></p>
                     <p><strong>Giá:</strong> <?php echo number_format($room['price'], 0, ',', '.'); ?> VNĐ</p>
-                    <p><strong>Tình trạng:</strong> <?php echo $room['status'] == 'empty' ? 'Còn trống' : 'Đã cho thuê'; ?></p>
+                    <p><strong>Tình trạng:</strong> <?php echo $room['status'] == 'vacant' ? 'Còn trống' : 'Đã cho thuê'; ?></p>
                 </div>
             </div>
         </div>
 
-        <!-- Hiển thị ảnh phòng -->
-        <div class="mt-4">
-            <h3>Ảnh Phòng</h3>
-            <?php while($anh = $result_image->fetch_assoc()) : ?>
-            <a href="xem.php?id=<?php echo $anh['image_id']; ?>">
-                    <img src="<?php echo $anh['image_path']; ?>" alt="sample picture" width="100px" height="100px">
-                    <p><?php echo $anh['room_id']; ?></p>
-            </a>
-            <?php endwhile; ?>
-        </div>
-
+     
         <!-- Nút quay lại -->
         <div class="mt-4">
             <a href="quanlyphong.php" class="btn btn-secondary">Quay lại</a>
